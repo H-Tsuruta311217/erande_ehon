@@ -6,32 +6,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  scope module: :public do
-    root to: "homes#top"
-    get "/about" => "homes#about", as: "about"
-    get "search" => "searches#search"
-    get 'categorysearches/search', to: 'categorysearches#search'
-    resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
-      resource:favorites, only: [:index, :create, :destroy]
-      resources :book_comments, only: [:create, :destroy]
-    end
-    resources :members, only: [:show, :update, :create]
-    get "/members/information/edit" => "members#edit"
-    get "/members/confirm" => "members#confirm"
-    patch "/members/withdraw" => "members#withdraw"
-  end
 
-  namespace :admin do
-    get 'top' => 'homes#top', as: 'top'
-    get 'search' => 'homes#search', as: 'search'
-    resources :books
-    resources :categorys, only: [:index, :edit, :create, :update]
-    resources :members, only: [:index, :show, :edit, :update]
-  end
 
   # 顧客用
   # URL /customers/sign_in ...
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
