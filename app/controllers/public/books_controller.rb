@@ -1,13 +1,13 @@
 class Public::BooksController < ApplicationController
   def new
-    @newbook = Book.new
+    @book = Book.new
   end
 
   def create
     @book = Book.new(book_params)
     @book.member_id = current_member.id
     if @book.save
-      redirect_to book_path(@book), notice: "You have created book successfully."
+      redirect_to public_books_path(@book), notice: "投稿しました！"
     else
       @books = Book.all
       render 'index'
