@@ -1,10 +1,10 @@
-<h1>画像投稿フォーム</h1>
+<h2>絵本新規投稿</h2>
 <%= form_with model: @book do |f| %>
-  <h4>画像</h4>
+  <h3>画像</h3>
   <%= f.file_field :image, accept: "image/*" %>
-  <h4>タイトル</h4>
+  <h3>タイトル</h3>
   <%= f.text_field :name %>
-  <h4>あらすじ</h4>
+  <h3>あらすじ</h3>
   <%= f.text_area :description %>
   <%= f.submit '投稿' %>
 <% end %>

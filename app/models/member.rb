@@ -7,6 +7,8 @@ class Member < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
 
+  validates :last_name,   presence: true, length: {maximum: 20}
+  validates :first_name,  presence: true, length: {maximum: 20}
+  validates :nickname,    presence: true, length: {maximum: 20}
 end

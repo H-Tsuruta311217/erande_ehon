@@ -9,7 +9,7 @@
           <table class="table table-bordered">
             <tr>
               <td class="bg-light">氏名</td>
-              <td><%= @member.full_name %></td>
+              <td><%= @member.last_name + @member.first_name %></td>
             </tr>
 
             <tr>
@@ -19,7 +19,7 @@
 
             <tr>
               <td class="bg-light">メールアドレス</td>
-              <td><%= @customer.email %></td>
+              <td><%= @member.email %></td>
             </tr>
           </table>
           <div class='col-md-8 offset-md-1'>

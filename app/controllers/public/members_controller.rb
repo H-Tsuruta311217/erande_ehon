@@ -1,11 +1,11 @@
 class Public::MembersController < ApplicationController
 
   def show
-    @member = current_member
+    @member = Member.find(params[:id])
   end
 
   def edit
-    @member = current_member
+    @member = Member.find(params[:id])
   end
 
   def update
@@ -17,10 +17,6 @@ class Public::MembersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name,
-                                     :first_name,
-                                     :nickname,
-                                     :email
-                                     )
+    params.require(:member).permit(:last_name, :first_name, :nickname, :email)
   end
 end
