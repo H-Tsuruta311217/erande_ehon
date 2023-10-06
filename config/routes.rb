@@ -9,7 +9,8 @@ Rails.application.routes.draw do
       resource:favorites, only: [:index, :create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :members, only: [:show, :update, :create]
+    resources :members, only: [:update, :create]
+    get "members/mypage" => "members#show"
     get "/members/information/edit" => "members#edit"
     get "/members/confirm" => "members#confirm"
     patch "/members/withdraw" => "members#withdraw"
