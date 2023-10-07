@@ -32,10 +32,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'top' => 'homes#top', as: 'top'
+    root to: 'homes#top', as: 'top'
     get 'search' => 'homes#search', as: 'search'
     resources :books
-    resources :categorys, only: [:index, :edit, :create, :update]
+    resources :categories, only: [:index, :edit, :create, :update]
     resources :members, only: [:index, :show, :edit, :update]
   end
 
