@@ -4,7 +4,7 @@
       <h4 class="my-5">マイページ</h4>
         <div class="d-flex align-items-center">
           <h3><b>登録情報</b></h3>
-          <%= link_to "編集する", members_information_edit_path, class:"btn btn-success ml-3" %>
+          <%= link_to "編集する", edit_member_path, class:"btn btn-dark ml-3" %>
         </div>
           <table class="table table-bordered">
             <tr>
@@ -22,8 +22,7 @@
               <td><%= @member.email %></td>
             </tr>
           </table>
-          <div class='col-md-8 offset-md-1'>
-          <h2>投稿した絵本の一覧</h2>
+
     </div>
   </div>
 </div>

@@ -19,9 +19,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
     get "/search" => "searches#search"
-    resources :members, only: [:update, :create, :show]
-    get "/members" => "members#show"
-    get "/members/information/edit" => "members#edit"
+    resources :members, only: [:show, :edit, :update]
     get "/members/confirm" => "members#confirm"
     patch "/members/withdraw" => "members#withdraw"
     get '/category/search', to: 'searches#category_search'
