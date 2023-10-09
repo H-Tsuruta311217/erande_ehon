@@ -20,9 +20,22 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  def confirm
+    @member = Member.find(params[:id])
+  end
+
+  def withdraw
+    @member = Member.find(params[:id])
+    # is_activeカラムをtrueに変更することにより削除フラグを立てる
+    @member.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+
   private
 
-  def customer_params
+  def member_params
     params.require(:member).permit(:last_name, :first_name, :nickname, :email)
   end
 

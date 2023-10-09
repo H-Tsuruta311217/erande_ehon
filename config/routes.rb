@@ -20,8 +20,10 @@ Rails.application.routes.draw do
     get "/about" => "homes#about", as: "about"
     get "/search" => "searches#search"
     resources :members, only: [:show, :edit, :update]
-    get "/members/confirm" => "members#confirm"
-    patch "/members/withdraw" => "members#withdraw"
+    # 退会確認画面
+    get "/members/:id/confirm" => "members#confirm", as: "confirm_member"
+    # 論理削除用のルーティング
+    patch "/members/:id/withdraw" => "members#withdraw", as: "withdraw_member"
     get '/category/search', to: 'searches#category_search'
     resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resource:favorites, only: [:index, :create, :destroy]
