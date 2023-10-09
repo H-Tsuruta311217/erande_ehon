@@ -2,22 +2,22 @@
 <%= form_with model: [ :admin, book ], local: true do |f| %>
   <table class="table table-borderless">
     <tr>
-      <td><%= f.label :商品画像 %></td>
+      <td><%= f.label :絵本画像 %></td>
       <td><%= f.file_field :book_image, accept: "image/*" %></td>
       <td></td>
     </tr>
     <tr>
-      <td><%= f.label :商品名 %></td>
-      <td><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></td>
+      <td><%= f.label :絵本の名前 %></td>
+      <td><%= f.text_field :name, placeholder: "絵本の名前", class: "form-control" %></td>
       <td></td>
     </tr>
     <tr>
-      <td><%= f.label :商品説明 %></td>
+      <td><%= f.label :あらすじ %></td>
       <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows: 5 %></td>
       <td></td>
     </tr>
     <tr>
-      <td><%= f.label :ジャンル %></td>
+      <td><%= f.label :カテゴリ %></td>
       <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></td>
       <td></td>
     </tr>

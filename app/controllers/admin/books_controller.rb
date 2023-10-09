@@ -1,4 +1,7 @@
 class Admin::BooksController < ApplicationController
+  
+  before_action :authenticate_admin!, except: [:top]
+  
   def new
     @book = Book.new
   end
@@ -17,11 +20,11 @@ class Admin::BooksController < ApplicationController
   end
 
   def edit
-    @book = Books.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def update
-    @book = Books.find(params[:id])
+    @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to admin_book_path(@book), notice: "変更しました。"
     else
@@ -30,6 +33,12 @@ class Admin::BooksController < ApplicationController
   end
 
   def show
-    @book = Books.find(params[:id])
+    @book = Book.find(params[:id])
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:book_image, :name, :description, :category_id)
   end
 end

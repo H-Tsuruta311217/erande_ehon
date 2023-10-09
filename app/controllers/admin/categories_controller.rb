@@ -27,6 +27,12 @@ class Admin::CategoriesController < ApplicationController
     else
       render :edit
     end
+
+    def destroy
+      @category.destroy
+      redirect_to categories_path
+    end
+
   end
 
   private

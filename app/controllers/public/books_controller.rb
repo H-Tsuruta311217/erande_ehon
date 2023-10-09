@@ -1,4 +1,7 @@
 class Public::BooksController < ApplicationController
+  before_action :authenticate_member!
+  before_action :ensure_correct_member, only: [:edit, :update, :destroy]
+
   def new
     @book = Book.new
   end
@@ -7,10 +10,10 @@ class Public::BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.member_id = current_member.id
     if @book.save
-      redirect_to public_books_path(@book), notice: "投稿しました！"
+      redirect_to books_path(@book), notice: "投稿しました！"
     else
       @books = Book.all
-      render 'index'
+      render 'new'
     end
   end
 
@@ -20,10 +23,13 @@ class Public::BooksController < ApplicationController
     @member = @book.member
     @newbook = Book.new
     @post_comment = PostComment.new
+    @categories = Category.all
   end
 
   def index
     @books = Book.all
+    @all_books = Book.all
+    @categories = Category.all
   end
 
   def edit
@@ -50,7 +56,7 @@ class Public::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:name, :description, :category)
+    params.require(:book).permit(:name, :description, :book_image, :category_id)
   end
 
   def ensure_correct_member

@@ -58,3 +58,6 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem "enum_help"
+
+# Use Active Storage variant
+gem 'image_processing', '~> 1.2'

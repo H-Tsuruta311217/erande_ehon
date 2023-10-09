@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get "/members/information/edit" => "members#edit"
     get "/members/confirm" => "members#confirm"
     patch "/members/withdraw" => "members#withdraw"
-    get '/categorysearches/search', to: 'categorysearches#search'
+    get '/category/search', to: 'searches#category_search'
     resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resource:favorites, only: [:index, :create, :destroy]
       resources :post_comments, only: [:create, :destroy]
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     root to: 'homes#top', as: 'top'
     get 'search' => 'homes#search', as: 'search'
     resources :books
-    resources :categories, only: [:index, :edit, :create, :update]
+    resources :categories, only: [:index, :edit, :create, :update, :destroy]
     resources :members, only: [:index, :show, :edit, :update]
   end
 
