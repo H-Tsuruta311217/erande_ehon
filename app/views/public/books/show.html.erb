@@ -8,18 +8,17 @@
 
     		<table class='table'>
     		  <tr>
-    		    <%= image_tag @book.get_book_image(450, 300), style: "object-fit: cover; width: 450px; height: 300px;" %>
+    		    <%= image_tag @book.get_book_image(300, 250), style: "object-fit: cover; width: 450px; height: 300px;" %>
             <td><%= @book.name %></td>
             <td><%= @book.description %></td>
-            <td><%= Category.find(@book.category_id).name %></td>
+            <td>
+              <ul>
+                <% @book.categories.each do |category| %>
+                  <li><%= category.name %></li>
+                <% end %>
+              </ul>
+            </td>
           </tr>
-        </table>
-
-         </div>
-        <table>
-          <tbody>
-
-          </tbody>
         </table>
 
     </div>

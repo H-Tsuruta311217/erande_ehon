@@ -1,8 +1,8 @@
 class Book < ApplicationRecord
 
   belongs_to :member
+  has_many   :category_books
   has_many   :categories, through: :category_books
-  has_many   :category_book
   has_many   :post_comments, dependent: :destroy
   has_many   :favorites, dependent: :destroy
   has_many   :favorited_members, through: :favorites, source: :user
@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_one_attached :book_image
   validates        :name,presence: true
   validates        :description,presence: true,length:{maximum: 200}
-  validates        :category, presence: true
+  validates        :categories, presence: true
 
   # 絵本画像のサイズ調整
   def get_book_image(width, height)

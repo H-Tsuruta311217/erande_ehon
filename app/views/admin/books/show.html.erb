@@ -1,22 +1,28 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-3'>
 
-    </div>
-    <div class='col-md-8 offset-md-1'>
-  		<h2>絵本の詳細</h2>
-
-    		<table class='table'>
-    		  <tr>
-    		    <%= image_tag @book.get_book_image(450, 300), style: "object-fit: cover; width: 450px; height: 300px;" %>
-            <td><%= @book.name %></td>
-            <td><%= @book.description %></td>
-            <td><%= Category.find(@book.category_id).name %></td>
-          </tr>
-        </table>
-
+<div class="container py-5">
+  <h2>絵本の詳細</h2>
     <div class="row justify-content-center">
-      <%= link_to '編集する', edit_admin_book_path(book.id), class: "btn btn-dark px-4" %>
+      <%= image_tag @book.get_book_image(300, 250) %>
+    	<table class='table'>
+  		  <tr>
+  		    <td>絵本の名前</td>
+          <td><%= @book.name %></td>
+        </tr>
+        <tr>
+          <td>あらすじ</td>
+          <td><%= simple_format(@book.description) %></td>
+        </tr>
+        <tr>
+          <td>カテゴリ</td>
+          <td>
+              <% @book.categories.each do |category| %>
+                <%= category.name %> &emsp; <!-- カテゴリ名とスペースを追加 -->
+              <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
-  </div>
+    <div class="row justify-content-center">
+      <%= link_to '編集する', edit_admin_book_path(@book), class: "btn btn-dark px-4" %>
+    </div>
 </div>

@@ -1,2 +1,9 @@
-<h1>Admin::Books#edit</h1>
-<p>Find me in app/views/admin/books/edit.html.erb</p>
+<div class="container py-5">
+  <div class="row mt-3 mb-3 offset-1 text-center">
+    <h3 class="px-4 title-background">絵本編集</h3>
+  </div>
+  <div class="row justify-content-center">
+    <%= render 'layouts/error', obj: @book %>
+  </div>
+  <%= render 'form', book: @book %>
+</div>

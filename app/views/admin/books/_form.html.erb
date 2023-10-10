@@ -18,12 +18,13 @@
     </tr>
     <tr>
       <div class="form-group">
-        <td><%= f.label :カテゴリ %></td>
-        <td><%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category|, class: "form-control" %></td>
-        <td><%= category.label do %></td>
-          <td><%= category.check_box %></td>
-          <td><%= category.text %></td>
-        <td><% end %></td>
+        <td><%= f.label :category, "カテゴリ" %></td>
+        <td><%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+              <%= category.label(class: "checkbox-inline") do %>
+                <%= category.check_box %> <%= category.text %>
+              <% end %>
+            <% end %>
+        </td>
       </div>
     </tr>
 
