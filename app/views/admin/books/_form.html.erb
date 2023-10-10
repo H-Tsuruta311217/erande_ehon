@@ -17,9 +17,14 @@
       <td></td>
     </tr>
     <tr>
-      <td><%= f.label :カテゴリ %></td>
-      <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></td>
-      <td></td>
+      <div class="form-group">
+        <td><%= f.label :カテゴリ %></td>
+        <td><%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category|, class: "form-control" %></td>
+        <td><%= category.label do %></td>
+          <td><%= category.check_box %></td>
+          <td><%= category.text %></td>
+        <td><% end %></td>
+      </div>
     </tr>
 
   </table>

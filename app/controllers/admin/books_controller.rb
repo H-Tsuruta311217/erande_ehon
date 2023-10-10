@@ -1,7 +1,7 @@
 class Admin::BooksController < ApplicationController
-  
+
   before_action :authenticate_admin!, except: [:top]
-  
+
   def new
     @book = Book.new
   end
@@ -16,7 +16,13 @@ class Admin::BooksController < ApplicationController
   end
 
   def index
-     @books = Book.page(params[:page]).per(10)
+     @categories = Category.all
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @books = @category.books.recent.page(params[:page])
+    else
+      @books = Book.page(params[:page]).per(10)
+    end
   end
 
   def edit
@@ -39,6 +45,6 @@ class Admin::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:book_image, :name, :description, :category_id)
+    params.require(:book).permit(:book_image, :name, :description, { category_ids: [] })
   end
 end

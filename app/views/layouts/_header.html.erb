@@ -1,6 +1,16 @@
 <header style="background-color: #F5A9A9;">
   <div class="container-fluid">
     <div class="row mx-auto">
+      <div class="col-3">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', style: "object-fit: cover; width: 150px; height: 80px;" %>
+        <% end %>
+      </div>
+      <div class="col-3 mt-3 text-right">
+        <% if member_signed_in?%>
+          <p><%= "ようこそ、#{current_member.last_name}#{current_member.first_name}さん！" %></p>
+        <% end %>
+      </div>
       <div class="col-6">
         <ul class="row justify-content-end my-2 list-unstyled">
           <% if member_signed_in? %>

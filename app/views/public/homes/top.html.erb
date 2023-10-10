@@ -1,2 +1,29 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container pt-5 pb-5">
+  <div class="row">
+    <%= render "public/books/category", category: @categories %>
+      <div class="col-10">
+        <div class="main-visual-cover mx-auto">
+          <div class="main-visual">
+            <h3 class=" mt-5">ようこそ、えらんで えほんへ!</h3>
+            <p>このサイトは、こどもの大好きな絵本をみつける</p>
+            <p>ママやパパのための</p>
+            <p>口コミ＆コミュニティサイトです。</p>
+          </div>
+        </div>
+      <h3 class="mt-3">新着商品</h3>
+      <div class="d-flex justify-content-center" >
+        <% @books.each do |book| %>
+          <div class="mx-2 mb-4">
+            <%= link_to book_path(book.id) do %>
+              <%= image_tag book.get_book_image(240, 160), style: "object-fit: cover; width: 240px; height: 160px;" %>
+            <% end %>
+              <p><%= book.name %></p>
+          </div>
+        <% end %>
+      </div>
+    <div class="row justify-content-end">
+      <i class="fa-solid fa-cake-candles mt-1"></i>
+        <%= link_to '全てのえほんを見る>', books_path, class: "text-reset" %>
+    </div>
+  </div>
+</div>

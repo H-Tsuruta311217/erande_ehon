@@ -1,7 +1,8 @@
 class Book < ApplicationRecord
 
   belongs_to :member
-  has_many   :categories, dependent: :destroy
+  has_many   :categories, through: :category_books
+  has_many   :category_book
   has_many   :post_comments, dependent: :destroy
   has_many   :favorites, dependent: :destroy
   has_many   :favorited_members, through: :favorites, source: :user
