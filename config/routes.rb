@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get "/members/:id/confirm" => "members#confirm", as: "confirm_member"
     # 論理削除用のルーティング
     patch "/members/:id/withdraw" => "members#withdraw", as: "withdraw_member"
-    get '/category/search', to: 'searches#category_search'
+    get 'tagsearches/search', to: 'tagsearches#search'
     resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resource:favorites, only: [:index, :create, :destroy]
       resources :post_comments, only: [:create, :destroy]

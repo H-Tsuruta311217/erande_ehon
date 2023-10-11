@@ -25,4 +25,8 @@ class Book < ApplicationRecord
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "created_at", "description", "id", "member_id", "name", "updated_at"]
+  end
 end
