@@ -1,0 +1,20 @@
+<% if current_member.present? %>
+  <% if book.favorited_by?(current_member) %>
+    <%= link_to book_favorites_path(book), method: :delete do %>
+      <span style="color: red;">お気に入り</span>
+      <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+      <span style="color: red;"><%= book.favorites.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to book_favorites_path(book), method: :post do %>
+      <span style="color: gray;">お気に入り</span>
+      <i class="far fa-heart" aria-hidden="true" style="color: gray;"></i>
+      <span style="color: gray;"><%= book.favorites.count %></span>
+    <% end %>
+  <% end %>
+<% else %>
+  <!-- ログインしていない場合の表示 -->
+  <span style="color: gray;">お気に入り</span>
+  <i class="far fa-heart" aria-hidden="true" style="color: gray;"></i>
+  <span style="color: gray;"><%= book.favorites.count %></span>
+<% end %>

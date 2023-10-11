@@ -1,10 +1,9 @@
 class Public::TagsearchesController < ApplicationController
-  
-  def search
-    @model = Book  #search機能とは関係なし
-    @word = params[:content]
-    @books = Book.where("category LIKE?","%#{@word}%")
-    render "tagsearches/tagsearch"
+
+  def category_search
+    @categories = Category.all
+    @category_id = params[:category_id]
+    @books = Book.where(category_id: @category_id).page(params[:page]).per(6)
   end
-  
+
 end

@@ -23,7 +23,9 @@ class Book < ApplicationRecord
   end
 
   def favorited_by?(member)
+    #現在ログインしている会員によっていいねされてる？
     favorites.exists?(member_id: member.id)
+    #いいねは存在してる？(いいねを既に押してるか、押していないか)
   end
 
   def self.ransackable_attributes(auth_object = nil)
