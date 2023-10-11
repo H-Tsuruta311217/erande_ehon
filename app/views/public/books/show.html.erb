@@ -19,9 +19,21 @@
               </ul>
             </td>
             <td><%= render'public/favorites/favorite', book: @book %></td>
+            <td>
+              <p>コメント件数：<%= @book.post_comments.count %></p>
+              <% @book.post_comments.each do |post_comment| %>
+                <%= post_comment.member.nickname %>
+                <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+              <% end %>
+            </td>
           </tr>
         </table>
-
+      <div>
+        <%= form_with model: [@book, @post_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
