@@ -27,13 +27,15 @@ class Admin::CategoriesController < ApplicationController
     else
       render :edit
     end
-
-    def destroy
-      @category.destroy
-      redirect_to categories_path
-    end
-
   end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:notice] = "カテゴリを削除しました"
+    redirect_to admin_categories_path
+  end
+
 
   private
 
