@@ -4,8 +4,9 @@ class Book < ApplicationRecord
   has_many   :category_books
   has_many   :categories, through: :category_books
   has_many   :post_comments, dependent: :destroy
+  has_many   :post_comment_members, through: :post_comments, source: :member
   has_many   :favorites, dependent: :destroy
-  has_many   :favorited_members, through: :favorites, source: :user
+  has_many   :favorited_members, through: :favorites, source: :member
 
   has_one_attached :book_image
   validates        :name,presence: true

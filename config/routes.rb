@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get '/category_search', to: 'tagsearches#search', as: 'category_search'
     resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resource:favorites, only: [:index, :create, :destroy]
-      resources :post_comments, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy, :index]
     end
   end
 
