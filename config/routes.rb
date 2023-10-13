@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     resources :books
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
     resources :members, only: [:index, :show, :edit, :update]
+    resources :post_comments, only: [:index, :new, :create, :show, :edit, :destroy]
   end
 
 

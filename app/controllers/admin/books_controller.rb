@@ -1,6 +1,7 @@
 class Admin::BooksController < ApplicationController
 
   before_action :authenticate_admin!, except: [:top]
+  helper_method :can_delete_comment?
 
   def new
     @book = Book.new
@@ -41,6 +42,14 @@ class Admin::BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
   end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to admin_books_path
+  end
+
+  
 
   private
 

@@ -20,9 +20,35 @@
               <% end %>
           </td>
         </tr>
+        <tr>
+          <td>コメント件数：<span id="comment_count"><%= @book.post_comments.count %></span></td>
+        </tr>
+        <tr>
+          <td>
+            <div id="comment_index">
+              <table>
+                <tbody>
+                  <% @book.post_comments.each do |post_comment| %>
+                  <tr>
+                    <td><%= post_comment.member.nickname %>さんのコメント：</td>
+                    <td><%= post_comment.comment %></td>
+                    <td>
+                      <%= link_to "削除", book_post_comment_path(@book, post_comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger float-end", remote: true %>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
       </table>
+
     </div>
     <div class="row justify-content-center">
       <%= link_to '編集する', edit_admin_book_path(@book), class: "btn btn-dark px-4" %>
+      &emsp;
+      <%= link_to "削除する", admin_book_path(@book), class: "btn btn-danger px-4", method: :delete, data: { confirm: '本当に削除しますか？' } %>
     </div>
+  </div>
 </div>
