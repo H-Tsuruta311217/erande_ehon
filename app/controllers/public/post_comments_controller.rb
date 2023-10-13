@@ -9,17 +9,15 @@ class Public::PostCommentsController < ApplicationController
     #redirect_to book_path(@book)
   end
 
-  def index
-  end
 
 
   def edit
   end
 
   def destroy
-    comment = PostComment.find(params[:id])
+    @comment = PostComment.find(params[:id])
     #redirect_to book_path(params[:book_id])
-    if comment.destroy
+    if @comment.destroy
       render json: { success: "コメントが削除されました" }, status: :ok
     else
       render json: { error: "コメントの削除に失敗しました" }, status: :unprocessable_entity

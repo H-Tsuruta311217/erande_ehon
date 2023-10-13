@@ -19,15 +19,19 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about" => "homes#about", as: "about"
     get "/search" => "searches#search"
-    resources :members, only: [:show, :edit, :update]
+    resources :members, only: [:show, :edit, :update] do
+      member do
+        get :favorites
+      end
+    end
     # 退会確認画面
     get "/members/:id/confirm" => "members#confirm", as: "confirm_member"
     # 論理削除用のルーティング
     patch "/members/:id/withdraw" => "members#withdraw", as: "withdraw_member"
     get '/category_search', to: 'tagsearches#search', as: 'category_search'
     resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+      resources :post_comments, only: [:create, :destroy]
       resource:favorites, only: [:index, :create, :destroy]
-      resources :post_comments, only: [:create, :destroy, :index]
     end
   end
 

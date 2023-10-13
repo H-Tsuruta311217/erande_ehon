@@ -4,6 +4,8 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @favorite_books = current_member.favorites.map(&:book)
+    @books = Book.page(params[:page])
   end
 
   def edit
@@ -31,6 +33,9 @@ class Public::MembersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+  end
+
+  def favorites
   end
 
   private
