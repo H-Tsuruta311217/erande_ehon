@@ -11,4 +11,10 @@ class Member < ApplicationRecord
   validates :last_name,   presence: true, length: {maximum: 20}
   validates :first_name,  presence: true, length: {maximum: 20}
   validates :nickname,    presence: true, length: {maximum: 20}
+
+  def self.guest
+    find_or_create_by(email: 'guest@example.com') do |member|
+      member.password = SecureRandom.urlsafe_base64
+    end
+  end
 end

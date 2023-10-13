@@ -1,2 +1,38 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-11 mx-auto"><h3><%= "#{ @member.last_name }#{ @member.first_name }さんの会員詳細" %></h3>
+
+      <table class="table table-bordered">
+        <div class="py-3">
+          <tr>
+            <td>会員ID</td>
+            <td><%= @member.id %></td>
+          </tr>
+          <tr>
+            <td>氏名</td>
+            <td><%= @member.last_name %> <%= @member.first_name %></td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= @member.nickname %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @member.email %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <% if @member.is_active == false %>
+                <p>退会</p>
+              <% else %>
+                <p>有効</p>
+              <% end %>
+            </td>
+          </tr>
+        </div>
+      </table>
+      <%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>

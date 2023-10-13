@@ -3,15 +3,15 @@ class Public::MembersController < ApplicationController
   before_action :authenticate_member!, only: [:show]
 
   def show
-    @member = Member.find(params[:id])
-    @favorite_books = current_member.favorites.map(&:book)
+    if params[:id] == "guest_sign_in"
+      member = Member.find_by(id: "guest_sign_in")
+    else
+      member = Member.find(params[:id])
+    end
+    @favorite_books = member.favorites.map(&:book)
     @books = Book.page(params[:page])
   end
 
-  def edit
-    ensure_correct_member
-    @member = Member.find(params[:id])
-  end
 
   def update
     ensure_correct_member

@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   }
 
   # 顧客用
-  # URL /customers/sign_in ...
+  # URL /members/sign_in ...
   devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+
+  devise_scope :member do
+    post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
 
   scope module: :public do
