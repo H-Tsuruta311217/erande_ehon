@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
 
-  belongs_to :member
   has_many   :category_books
   has_many   :categories, through: :category_books
   has_many   :post_comments, dependent: :destroy
@@ -11,7 +10,7 @@ class Book < ApplicationRecord
   has_one_attached :book_image
   validates        :name,presence: true
   validates        :description,presence: true,length:{maximum: 200}
-  validates        :categories, presence: true
+  # validates        :categories, presence: true
 
   enum status: {draft: 1,published: 0}
   #0: 公開中, 1: 下書き,

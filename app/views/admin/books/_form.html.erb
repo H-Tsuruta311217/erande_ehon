@@ -20,14 +20,16 @@
         <div class="form-group">
           <td><%= f.label :category, "カテゴリ" %></td>
           <td><%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
-                <%= category.label(class: "checkbox-inline") do %>
-                  <%= category.check_box %> <%= category.text %>
+                <% if category.check_box.object_id.present? %>
+                  <%= category.label(class: "checkbox-inline") do %>
+                    <%= category.check_box %> <%= category.text %>
+                  <% end %>
                 <% end %>
               <% end %>
           </td>
         </div>
       </tr>
-  
+
     </table>
     <div class="form-group">
      <%= f.label"公開範囲を選択" %><br>

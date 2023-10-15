@@ -6,7 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
-  member_name:  "管理者",
   email: 'testc@testc.com',
   password: '111111'
 )
+
+category_names = ["0歳","1歳","2歳","どうわ"]
+category_names.each do |name|
+  Category.create!(name: name)
+end

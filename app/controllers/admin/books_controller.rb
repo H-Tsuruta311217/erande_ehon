@@ -8,13 +8,6 @@ class Admin::BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-
-    if params[:draft].present?
-      @book.status = :draft
-    else
-      @book.status = :published
-    end
-
     if @book.save
       redirect_to admin_book_path(@book), notice: "登録しました。"
     else
