@@ -1,40 +1,44 @@
 <div class="row justify-content-center">
-<%= form_with model: [ :admin, book ], local: true do |f| %>
-  <table class="table table-borderless">
-    <tr>
-      <td><%= f.label :絵本画像 %></td>
-      <td><%= f.file_field :book_image, accept: "image/*" %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><%= f.label :絵本の名前 %></td>
-      <td><%= f.text_field :name, placeholder: "絵本の名前", class: "form-control" %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><%= f.label :あらすじ %></td>
-      <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows: 5 %></td>
-      <td></td>
-    </tr>
-    <tr>
-      <div class="form-group">
-        <td><%= f.label :category, "カテゴリ" %></td>
-        <td><%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
-              <%= category.label(class: "checkbox-inline") do %>
-                <%= category.check_box %> <%= category.text %>
+  <%= form_with model: [ :admin, book ], local: true do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <td><%= f.label :絵本画像 %></td>
+        <td><%= f.file_field :book_image, accept: "image/*" %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><%= f.label :絵本の名前 %></td>
+        <td><%= f.text_field :name, placeholder: "絵本の名前", class: "form-control" %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><%= f.label :あらすじ %></td>
+        <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows: 5 %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <td><%= f.label :category, "カテゴリ" %></td>
+          <td><%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+                <%= category.label(class: "checkbox-inline") do %>
+                  <%= category.check_box %> <%= category.text %>
+                <% end %>
               <% end %>
-            <% end %>
-        </td>
-      </div>
-    </tr>
-
-  </table>
-  <div class="actions text-center">
-  <% if book.new_record? %>
-    <%= f.submit '新規登録', class: "btn btn-dark px-4" %>
-  <% else %>
-  　<%= f.submit '変更を保存', class: "btn btn-dark px-4" %>
+          </td>
+        </div>
+      </tr>
+  
+    </table>
+    <div class="form-group">
+     <%= f.label"公開範囲を選択" %><br>
+     <%= f.select :status, [["公開", "published"], ["下書き", "draft"]],required: true,class:"form-control" %>
+    </div>
+    <div class="actions text-center">
+      <% if book.new_record? %>
+        <%= f.submit '新規登録', class: "btn btn-dark px-4" %>
+      <% else %>
+      　<%= f.submit '変更を保存', class: "btn btn-dark px-4" %>
+      <% end %>
+    </div>
   <% end %>
-  </div>
-<% end %>
 </div>

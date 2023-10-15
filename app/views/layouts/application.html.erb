@@ -2,7 +2,7 @@
 <html>
   <head>
     <%= favicon_link_tag('erande_ehon_favicon.ico') %>
-    <titleえらんで えほん</title>
+    <title>えらんで えほん</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,13 +12,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <%= render 'layouts/header' %>
-    <main class="container flex-shrink-0">
-      <%= flash[:notice] %>
-      <%= flash[:alert] %>
-      <%= yield %>
-    </main>
+    <div class="flex-grow-1">
+      <main class="container flex-shrink-0">
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+        <%= yield %>
+      </main>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -13,6 +13,9 @@ class Book < ApplicationRecord
   validates        :description,presence: true,length:{maximum: 200}
   validates        :categories, presence: true
 
+  enum status: {draft: 1,published: 0}
+  #0: 公開中, 1: 下書き,
+
   # 絵本画像のサイズ調整
   def get_book_image(width, height)
     unless book_image.attached?

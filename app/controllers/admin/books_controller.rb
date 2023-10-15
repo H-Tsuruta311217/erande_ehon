@@ -1,6 +1,5 @@
 class Admin::BooksController < ApplicationController
 
-  before_action :authenticate_admin!, except: [:top]
   helper_method :can_delete_comment?
 
   def new
@@ -9,20 +8,28 @@ class Admin::BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+
+    if params[:draft].present?
+      @book.status = :draft
+    else
+      @book.status = :published
+    end
+
     if @book.save
       redirect_to admin_book_path(@book), notice: "登録しました。"
     else
-      render :new
+      render :new, notice: '投稿に失敗しました。'
     end
   end
 
   def index
-     @categories = Category.all
+    @books = Book.all
+    @categories = Category.all
     if params[:category_id]
       @category = Category.find(params[:category_id])
       @books = @category.books.recent.page(params[:page])
     else
-      @books = Book.page(params[:page]).per(10)
+      @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(5)
     end
   end
 
@@ -33,7 +40,7 @@ class Admin::BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to admin_book_path(@book), notice: "変更しました。"
+      redirect_to redirect_path, notice: notice_message
     else
       render :edit
     end
@@ -49,11 +56,14 @@ class Admin::BooksController < ApplicationController
     redirect_to admin_books_path
   end
 
-  
+  def confirm
+    # @book = Book.find(params[:id])
+    @books = Book.where(status: :draft).order('created_at DESC').page(params[:page]).per(5)
+  end
 
   private
 
   def book_params
-    params.require(:book).permit(:book_image, :name, :description, category_ids: [] )
+    params.require(:book).permit(:book_image, :name, :description, :status, category_ids: [])
   end
 end

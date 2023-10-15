@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get "/members/:id/confirm" => "members#confirm", as: "confirm_member"
     # 論理削除用のルーティング
     patch "/members/:id/withdraw" => "members#withdraw", as: "withdraw_member"
-    get '/category_search', to: 'tagsearches#search', as: 'category_search'
+    get '/category_search', to: 'tagsearches#category_search', as: 'category_search'
     resources :books, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resources :post_comments, only: [:create, :destroy]
       resource:favorites, only: [:index, :create, :destroy]
@@ -42,10 +42,14 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top', as: 'top'
     get 'search' => 'homes#search', as: 'search'
-    resources :books
+    resources :books do
+      resources :post_comments, only: [:create, :destroy]
+      collection do
+        get :confirm
+      end
+    end
     resources :categories, only: [:index, :edit, :create, :update, :destroy]
     resources :members, only: [:index, :show, :edit, :update]
-    resources :post_comments, only: [:index, :new, :create, :show, :edit, :destroy]
   end
 
 
