@@ -54,9 +54,19 @@ class Admin::BooksController < ApplicationController
     @books = Book.where(status: :draft).order('created_at DESC').page(params[:page]).per(5)
   end
 
+  def search
+    if params[:keyword]
+      @books = RakutenWebService::Ichiba::Book.search(keyword: params[:keyword])
+    end
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true)
+    @search_category = Category.find(params[:category_id]) if params[:category_id]
+    @search_word = params[:q][:name_cont] if params[:q].present?
+  end
+
   private
 
   def book_params
-    params.require(:book).permit(:book_image, :name, :description, :status, category_ids: [])
+    params.require(:book).permit(:image_url, :title, :item_caption, :status, category_ids: [])
   end
 end

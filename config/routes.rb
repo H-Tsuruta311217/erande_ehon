@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     get 'search' => 'homes#search', as: 'search'
     resources :books do
       resources :post_comments, only: [:create, :destroy]
+      get 'books/search'
       collection do
         get :confirm
       end

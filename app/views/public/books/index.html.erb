@@ -12,8 +12,8 @@
             <%= link_to book_path(book.id) do %>
               <%= image_tag book.get_book_image(180, 120), style: "object-fit: cover; width: 180px; height: 120px;" %>
             <% end %>
-            <p><%= book.name %></p>
-            <p><%= book.description %></p>
+            <p>絵本の名前：<%= book.name %></p>
+            <p>あらすじ：<%= book.description %></p>
             <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
           </div>
         <% end %>

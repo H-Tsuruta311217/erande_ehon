@@ -10,11 +10,11 @@
     		    <%= image_tag @book.get_book_image(300, 250), style: "object-fit: cover; width: 450px; height: 300px;" %>
             <tr>
   		    <td>絵本の名前</td>
-          <td><%= @book.name %></td>
+          <td><%= @book.title %></td>
         </tr>
         <tr>
           <td>あらすじ</td>
-          <td><%= simple_format(@book.description) %></td>
+          <td><%= simple_format(@book.item_caption) %></td>
         </tr>
         <tr>
           <td>カテゴリ</td>

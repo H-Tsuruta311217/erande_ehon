@@ -1,0 +1,6 @@
+<% @books.first(10).each do |book| %>
+<div class="list-group">
+ <%= image_tag (book['smallImageUrls'][0]) %>
+ <%= link_to book.title, "#{book.url}" %>
+</div>
+<% end %>

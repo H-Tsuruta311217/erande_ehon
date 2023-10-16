@@ -12,23 +12,18 @@
                     <%= link_to admin_book_path(book.id) do %>
                       <%= image_tag book.get_book_image(180, 120), style: "object-fit: cover; width: 180px; height: 120px;" %>
                     <% end %>
-                    <p><%= book.name %></p>
-                    <p><%= book.description %></p>
+                    <p>絵本の名前：<%= book.title %></p>
+                    <p>あらすじ：<%= book.item_caption %></p>
                   </div>
                 <% end %>
+                <%= paginate @books %>
               </div>
             </div>
           </div>
-
-      </div>
-
-    </div>
-  </div>
-</div>
-
-        <%= paginate @books %>
-        <%=link_to "下書き一覧", confirm_admin_books_path %>
       </div>
     </div>
   </div>
 </div>
+<%=link_to "下書き一覧", confirm_admin_books_path %>
+        
+      

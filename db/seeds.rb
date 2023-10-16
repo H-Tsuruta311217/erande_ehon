@@ -10,7 +10,7 @@ Admin.create!(
   password: '111111'
 )
 
-category_names = ["0歳","1歳","2歳","どうわ"]
+category_names = ["0歳","1歳","2歳","3歳","4歳","5歳","6歳","どうわ","どうぶつ","のりもの","むし"]
 category_names.each do |name|
   Category.create!(name: name)
 end
