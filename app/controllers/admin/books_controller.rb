@@ -7,15 +7,26 @@ class Admin::BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
-    if @book.save
-      redirect_to admin_book_path(@book), notice: "登録しました。"
+    @book = Book.find_or_initialize_by(isbn: params.dig(:book, :isbn))
+    if @book.new_record?
+      @book.assign_attributes(book_params)
+      if @book.save
+        redirect_to admin_book_path(@book), notice: "登録しました。"
+      else
+        render :new, notice: '投稿に失敗しました。'
+      end
     else
-      render :new, notice: '投稿に失敗しました。'
+      flash[:notice] = "登録済みです"
+      redirect_to admin_book_path(@book)
     end
   end
 
   def index
+    if params[:title].present?
+      @result = RakutenWebService::Books::Book.search(size: 7, title: params[:title])
+    else
+      @result = []
+    end
     @books = Book.all
     @categories = Category.all
     if params[:category_id]
@@ -67,6 +78,6 @@ class Admin::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:image_url, :title, :item_caption, :status, category_ids: [])
+    params.require(:book).permit(:image_url, :title, :item_caption, :status, :isbn, :url, :author, category_ids: [])
   end
 end

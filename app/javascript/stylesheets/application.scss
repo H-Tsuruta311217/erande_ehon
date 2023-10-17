@@ -30,3 +30,11 @@
     border: #ffe4e1 5px dotted; /*境界線の指定*/
     padding: 20px;
 }
+
+.about_image-left {
+    float: left; /* 画像を左に寄せる */
+}
+
+.about_image-right {
+    float: right; /* 画像を右に寄せる */
+}

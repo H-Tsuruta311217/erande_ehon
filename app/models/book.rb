@@ -9,7 +9,7 @@ class Book < ApplicationRecord
 
   has_one_attached :book_image
   validates        :title,presence: true
-  validates        :item_caption,presence: true,length:{maximum: 200}
+  #validates        :item_caption,presence: true,length:{maximum: 200}
   # validates        :categories, presence: true
 
   enum status: {draft: 1,published: 0}
