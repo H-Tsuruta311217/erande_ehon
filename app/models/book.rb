@@ -8,8 +8,8 @@ class Book < ApplicationRecord
   has_many   :favorited_members, through: :favorites, source: :member
 
   has_one_attached :book_image
-  validates        :name,presence: true
-  validates        :description,presence: true,length:{maximum: 200}
+  validates        :title,presence: true
+  validates        :item_caption,presence: true,length:{maximum: 200}
   # validates        :categories, presence: true
 
   enum status: {draft: 1,published: 0}

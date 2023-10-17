@@ -11,14 +11,15 @@
                   <%=link_to admin_book_path(book.id) do %>
                     <%= image_tag book.get_book_image(180, 120), style: "object-fit: cover; width: 180px; height: 120px;" %>
                   <% end %>
-                  <%= book.name %> <br>
-                  <%= book.description %>
+                  <%= book.title %> <br>
+                  <%= book.item_caption %>
                 <% end %>
                 </div>
               </div>
             </div>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
+  <%=link_to "公開済みの一覧へ戻る", admin_books_path %>
 </div>

@@ -1,1 +1,32 @@
 @use '~bootstrap/scss/bootstrap';
+
+.table {
+    color: #3B240B !important;
+}
+
+.table-bordered > tbody > tr > td {
+    border: 1px solid rgba(59, 36, 11, 0.7) !important;
+    color: #3B240B !important;
+}
+
+.table-bordered > thead > tr > th {
+    border: 1px solid rgba(59, 36, 11, 0.7) !important;
+    color: #3B240B !important;
+}
+
+.table-bordered > thead {
+  border-bottom: 2px solid rgba(59, 36, 11, 0.7) !important;
+}
+
+.btn-dark {
+    border: 0 none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #3B240B;
+    color: white
+}
+
+.category_search {
+    border: #ffe4e1 5px dotted; /*境界線の指定*/
+    padding: 20px;
+}

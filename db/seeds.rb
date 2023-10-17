@@ -10,6 +10,17 @@ Admin.create!(
   password: '111111'
 )
 
+5.times do |n|
+  Member.create!(
+    email: "test#{n + 1}@test.com",
+    last_name: "テスト",
+    first_name: "太郎#{n + 1}",
+    nickname: "テスト",
+    is_active: "true",
+    password: "000000"
+  )
+end
+
 category_names = ["0歳","1歳","2歳","3歳","4歳","5歳","6歳","どうわ","どうぶつ","のりもの","むし"]
 category_names.each do |name|
   Category.create!(name: name)

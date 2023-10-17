@@ -3,12 +3,12 @@
     <div class="row mx-auto">
       <div class="col-3">
         <%= link_to root_path do %>
-          <%= image_tag 'erande_ehon_logo.png', style: "object-fit: cover; width: 150px; height: 80px;" %>
+          <%= image_tag 'erande_ehon_logo.png', style: "object-fit: cover; width: 150px; height: 100px;" %>
         <% end %>
       </div>
-      <div class="col-3 mt-3 text-right">
+      <div class="col-3 mt-5 text-right">
         <% if member_signed_in?%>
-          <p><%= "ようこそ、#{current_member.last_name}#{current_member.first_name}さん！" %></p>
+          <p style="font-size:15px"><%= "ようこそ、#{current_member.last_name}#{current_member.first_name}さん！" %></p>
         <% end %>
       </div>
       <div class="col-6">
@@ -52,21 +52,28 @@
 
           <% else %>
             <li class="nav-item mx-2 mt-2">
+              <i class="fa-solid fa-book-open"></i>
+              <%= link_to "About", about_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
+            </li>
+            <li class="nav-item mx-2 mt-2">
               <i class="fa-solid fa-user-plus"></i>
-              <%= link_to "新規登録", new_member_registration_path %>
+              <%= link_to "新規登録", new_member_registration_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
             </li>
 
             <li class="nav-item mx-2 mt-2">
               <i class="fa-solid fa-right-to-bracket"></i>
-              <%= link_to "ログイン", new_member_session_path %>
+              <%= link_to "ログイン", new_member_session_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
             </li>
             <li class="nav-item mx-2 mt-2">
-              <%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post %>
+              <i class="fa-solid fa-seedling"></i>
+              <%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
             </li>
 
           <% end %>
         </ul>
-      <%= render 'layouts/search' %>
+        <div class="row justify-content-end my-2 list-unstyled">
+          <%= render 'layouts/search' %>
+        </div>
       </div>
     </div>
   </div>
