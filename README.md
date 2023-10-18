@@ -29,4 +29,11 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+- API : 楽天API
 ​
+## 使用素材
+- フリーイラスト素材として以下を使用
+ - kyuncuts(https://kyuncuts.com/)
+ - ICOOON MONO(https://icooon-mono.com/)
+- ロゴ作成
+ - CANVA(https://www.canva.com/)

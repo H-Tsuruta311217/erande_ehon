@@ -1,10 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-
-    </div>
     <div class='col-md-8 offset-md-1'>
-  		<h2>絵本の詳細</h2>
+  		<h2 class="row mt-5 mb-5">絵本の詳細</h2>
 
     		<table class='table'>
     		    <%= image_tag @book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
@@ -35,6 +32,7 @@
         <div id="comment-form">
           <%= render "public/post_comments/form", book: @book, post_comment: @post_comment %>
         </div>
+        <br>
     </div>
   </div>
 </div>
