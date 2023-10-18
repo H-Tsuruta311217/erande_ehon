@@ -1,5 +1,5 @@
 class Public::MembersController < ApplicationController
-  before_action :ensure_correct_member, only: [:update, :edit,:show]
+  before_action :ensure_correct_member, only: [:update, :edit, :show]
   before_action :authenticate_member!, only: [:show]
 
   def show
@@ -12,6 +12,7 @@ class Public::MembersController < ApplicationController
     @books = Book.page(params[:page])
   end
 
+  
 
   def update
     ensure_correct_member
@@ -36,6 +37,9 @@ class Public::MembersController < ApplicationController
   end
 
   def favorites
+    member = Member.find(params[:id])
+    @favorite_books = member.favorites.map(&:book)
+    @books = Book.page(params[:page])
   end
 
   private
@@ -47,7 +51,8 @@ class Public::MembersController < ApplicationController
   def ensure_correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
-      redirect_to member_path(current_member)
+      flash[:notice] = "権限がありません"
+      redirect_to request.referer
     end
   end
 

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       member do
         get :favorites
       end
+      get "members/:id/favorites" => "members#favorite"
     end
     # 退会確認画面
     get "/members/:id/confirm" => "members#confirm", as: "confirm_member"

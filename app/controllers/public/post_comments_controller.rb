@@ -4,7 +4,6 @@ class Public::PostCommentsController < ApplicationController
     @book = Book.find(params[:book_id])
     @post_comment = current_member.post_comments.new(post_comment_params)
     @post_comment.book_id = @book.id
-    @member = @book.member
     @post_comment.save
     #redirect_to book_path(@book)
   end
