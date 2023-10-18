@@ -44,7 +44,7 @@ class Admin::BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to redirect_path, notice: notice_message
+      redirect_to admin_book_path, notice: "変更を保村しました"
     else
       render :edit
     end
@@ -67,7 +67,7 @@ class Admin::BooksController < ApplicationController
 
   def search
     if params[:keyword]
-      @books = RakutenWebService::Ichiba::Book.search(keyword: params[:keyword])
+      @books = RakutenWebService::Ichiba::Books::Book.search(keyword: params[:keyword])
     end
     @q = Book.ransack(params[:q])
     @books = @q.result(distinct: true)

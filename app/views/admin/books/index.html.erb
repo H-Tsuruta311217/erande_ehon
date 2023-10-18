@@ -1,11 +1,15 @@
-<div class="container p-3">
+<div class="container pt-5 pb-5">
   <div class="row">
-    <div class="col-10">
-      <div class="row">
-        <h3>絵本一覧</h3>
-          <div class="row justify-content-end mb-3">
+    <div class="col-lg-4">
+      <h1>新規登録する<br>絵本を検索</h1>
+    <%= form_with url: admin_books_path, method: :get do |f| %>
+      <%= f.text_field :title %>
+      <%= f.submit "絵本を検索" %>
+    <% end %>
+    </div>
+    <div class="col-8">
+        <h2>絵本一覧</h2>
             <div class="col-2">
-              <%= link_to '+', new_admin_book_path, class: "title-background btn rounded-circle border-right border-bottom shadow btn-dark" %>
               <div class="d-flex flex-wrap">
                 <% @books.each do |book| %>
                   <div class="mx-2 mb-4">
@@ -45,8 +49,5 @@
   <% end %>
 <% end %>
 
-<%= form_with url: admin_books_path, method: :get do |f| %>
-  <%= f.text_field :title %>
-  <%= f.submit %>
-<% end %>
+
 

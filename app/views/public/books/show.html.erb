@@ -7,7 +7,7 @@
   		<h2>絵本の詳細</h2>
 
     		<table class='table'>
-    		    <%= image_tag @book.get_book_image(300, 250), style: "object-fit: cover; width: 450px; height: 300px;" %>
+    		    <%= image_tag @book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
             <tr>
   		    <td>絵本の名前</td>
           <td><%= @book.title %></td>

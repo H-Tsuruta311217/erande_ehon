@@ -10,10 +10,10 @@
         <% @books.each do |book| %>
           <div class="mx-2 mb-4">
             <%= link_to book_path(book.id) do %>
-              <%= image_tag book.get_book_image(180, 120), style: "object-fit: cover; width: 180px; height: 120px;" %>
+              <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
             <% end %>
-            <p>絵本の名前：<%= book.name %></p>
-            <p>あらすじ：<%= book.description %></p>
+            <p>絵本の名前：<%= book.title %></p>
+            <p>あらすじ：<%= book.item_caption %></p>
             <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
           </div>
         <% end %>

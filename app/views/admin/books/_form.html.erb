@@ -3,12 +3,12 @@
     <table class="table table-borderless">
       <tr>
         <td><%= f.label :絵本画像 %></td>
-        <td><%= f.file_field :book_image, accept: "image/*" %></td>
+        <td><%= f.file_field :image_url, style: "object-fit: cover; width: 180px; height: 120px;" %></td>
         <td></td>
       </tr>
       <tr>
         <td><%= f.label :絵本の名前 %></td>
-        <td><%= f.text_field :tilte, placeholder: "絵本の名前", class: "form-control" %></td>
+        <td><%= f.text_field :title, placeholder: "絵本の名前", class: "form-control" %></td>
         <td></td>
       </tr>
       <tr>
