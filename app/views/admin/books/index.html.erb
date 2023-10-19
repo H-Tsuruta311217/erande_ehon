@@ -1,19 +1,21 @@
 <div class="container pt-5 pb-5">
   <div class="row">
     <div class="col-lg-4">
-      <h1>新規登録する<br>絵本を検索</h1>
-        <%= form_with url: admin_books_path, method: :get do |f| %>
-          <%= f.text_field :title %>
-          <%= f.submit "絵本を検索" %>
-        <% end %>
+      <div class="booksearch">
+        <h1><span>新規登録する絵本を検索</span></h1>
+          <%= form_with url: admin_books_path, method: :get do |f| %>
+            <%= f.text_field :title %>
+            <%= f.submit "絵本を検索" %>
+          <% end %>
+      </div>
     </div>
     <div class="col-8">
-      <h2>絵本一覧</h2>
+      <h2><span>絵本一覧</span></h2>
         <div class="d-flex justify-content-center" >
           <% @books.each do |book| %>
             <div class="mx-2 mb-4">
               <%= link_to admin_book_path(book.id) do %>
-                <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+                <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
               <% end %>
               <p>絵本の名前：<%= book.title %></p>
               <p>あらすじ：<%= book.item_caption %></p>
@@ -24,8 +26,9 @@
     </div>
   </div>
 </div>
-  <%=link_to "下書き一覧", confirm_admin_books_path %>
-  
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <%=link_to "下書き一覧へ", confirm_admin_books_path, class: "mb-2;", style: "font-size: 15px;" "color: #3B240B" %>
+
   <% @result.each do |data| %>
     -------------<br><br>
     <%= data.inspect %><br>

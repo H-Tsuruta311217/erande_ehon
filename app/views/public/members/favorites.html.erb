@@ -7,7 +7,7 @@
               <% @favorite_books.each do |book| %>
                 <div class="mx-2 mb-4">
                   <%= link_to book_path(book.id) do %>
-                    <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
                   <% end %>
                   <p><%= book.title %></p>
                 </div>

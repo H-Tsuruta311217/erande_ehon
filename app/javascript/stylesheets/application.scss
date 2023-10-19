@@ -40,8 +40,22 @@
 }
 
 h1 {
-    font-size: 25px;
+  font-size: 15px;
 }
+
+h1 span {
+    display: table;
+    background: linear-gradient(transparent 80%, #A0DAEA 80%);
+}
+h2 {
+  font-size: 20px;
+}
+
+h2 span {
+    display: table;
+    background: linear-gradient(transparent 80%, #A0DAEA 80%);
+}
+
 /*ページネーション自体のデザイン*/
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
@@ -57,4 +71,9 @@ h1 {
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
   border-radius: 15px;    /*角を丸くする*/
+}
+
+.booksearch {
+  border: #ffe4e1 5px dotted; /*境界線の指定*/
+  padding: 20px;
 }

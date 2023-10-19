@@ -1,9 +1,9 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-12 offset-md-1'>
-  		<h2 class="row mt-5 mb-5">絵本の詳細</h2>
+  		<h2 class="row mt-5 mb-5"><span>絵本の詳細</span></h2>
     		<table class='table'>
-    		  <%= image_tag @book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+    		  <%= image_tag @book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
           <tr>
     		    <td>絵本の名前</td>
             <td><%= @book.title %></td>

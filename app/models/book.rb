@@ -31,18 +31,8 @@ class Book < ApplicationRecord
     #いいねは存在してる？(いいねを既に押してるか、押していないか)
   end
 
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @book = Book.where("title LIKE?","#{word}")
-    elsif search == "forward_match"
-      @book = Book.where("title LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @book = Book.where("title LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @book = Book.where("title LIKE?","%#{word}%")
-    else
-      @book = Book.all
-    end
+  def self.ransackable_attributes(auth_object = nil)
+    ["category_id", "created_at", "description", "id", "member_id", "name", "updated_at"]
   end
 
 end
