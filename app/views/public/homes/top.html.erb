@@ -16,8 +16,18 @@
         <div class="d-flex justify-content-center" >
           <% @books.each do |book| %>
             <div class="mx-2 mb-4">
-              <%= link_to book_path(book.id) do %>
-                <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+              <% if admin_signed_in? %>
+
+                <%= link_to admin_book_path(book.id) do %>
+                  <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+                <% end %>
+
+              <% else %>
+
+                <%= link_to book_path(book.id) do %>
+                  <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+                <% end %>
+
               <% end %>
                 <p><%= book.title %></p>
             </div>

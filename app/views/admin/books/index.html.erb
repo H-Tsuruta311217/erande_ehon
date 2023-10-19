@@ -11,19 +11,25 @@
     </div>
     <div class="col-8">
       <h2><span>絵本一覧</span></h2>
-        <div class="d-flex justify-content-center" >
-          <% @books.each do |book| %>
-            <div class="mx-2 mb-4">
-              <%= link_to admin_book_path(book.id) do %>
-                <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
-              <% end %>
-              <p>絵本の名前：<%= book.title %></p>
-              <p>あらすじ：<%= book.item_caption %></p>
-            </div>
-          <% end %>
+        <div class="card-list-container py-5">
+          <div class="d-flex justify-content-center" >
+            <% @books.each do |book| %>
+              <div class="mx-2 mb-4 shadow-lg" >
+                <%= link_to admin_book_path(book.id) do %>
+                  <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 180px; height: 120px;" %>
+                <% end %>
+                <div class="card-body">
+                  <div class="row">
+                    <p class="card-title"><strong>絵本の名前：<%= book.title %></strong></p>
+                    <p class="card-text">あらすじ：<%= book.item_caption %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
         <%= paginate @books %>
-    </div>
+    </div>  
   </div>
 </div>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
