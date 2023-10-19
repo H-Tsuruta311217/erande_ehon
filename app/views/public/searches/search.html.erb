@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><%= image_tag book.get_book_image(240, 160), style: "object-fit: cover; width: 240px; height: 160px;" %></td>
+        <td><%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %></td>
         <td>
           <% @book.categories.each do |category| %>
             <%= category.name %> &emsp; <!-- カテゴリ名とスペースを追加 -->

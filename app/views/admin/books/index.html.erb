@@ -2,52 +2,48 @@
   <div class="row">
     <div class="col-lg-4">
       <h1>新規登録する<br>絵本を検索</h1>
-    <%= form_with url: admin_books_path, method: :get do |f| %>
-      <%= f.text_field :title %>
-      <%= f.submit "絵本を検索" %>
-    <% end %>
+        <%= form_with url: admin_books_path, method: :get do |f| %>
+          <%= f.text_field :title %>
+          <%= f.submit "絵本を検索" %>
+        <% end %>
     </div>
     <div class="col-8">
-        <h2>絵本一覧</h2>
-            <div class="col-2">
-              <div class="d-flex flex-wrap">
-                <% @books.each do |book| %>
-                  <div class="mx-2 mb-4">
-                    <%= link_to admin_book_path(book.id) do %>
-                      <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
-                    <% end %>
-                    <p>絵本の名前：<%= book.title %></p>
-                    <p>あらすじ：<%= book.item_caption %></p>
-                  </div>
-                <% end %>
-                <%= paginate @books %>
-              </div>
+      <h2>絵本一覧</h2>
+        <div class="d-flex justify-content-center" >
+          <% @books.each do |book| %>
+            <div class="mx-2 mb-4">
+              <%= link_to admin_book_path(book.id) do %>
+                <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+              <% end %>
+              <p>絵本の名前：<%= book.title %></p>
+              <p>あらすじ：<%= book.item_caption %></p>
             </div>
-          </div>
-      </div>
+          <% end %>
+        </div>
+        <%= paginate @books %>
     </div>
   </div>
 </div>
-<%=link_to "下書き一覧", confirm_admin_books_path %>
-
-<% @result.each do |data| %>
-  -------------<br><br>
-  <%= data.inspect %><br>
-  ##########<br><br>
-  title:<%= data.title %><br>
-  author:<%= data.author %><br>
-  item_caption: <%= data.item_caption %><br>
-  image:<%= image_tag data.medium_image_url %><br>
-  <%= form_with model: Book.new, url: admin_books_path do |f| %>
-    <%= f.hidden_field :title, value: data.title %>
-    <%= f.hidden_field :item_caption, value: data.item_caption %>
-    <%= f.hidden_field :isbn, value: data.isbn %>
-    <%= f.hidden_field :author, value: data.author %>
-    <%= f.hidden_field :url, value: data.item_url %>
-    <%= f.hidden_field :image_url, value: data.medium_image_url.gsub('?_ex=120x120', '') %>
-    <%= f.submit "この本を登録" %>
+  <%=link_to "下書き一覧", confirm_admin_books_path %>
+  
+  <% @result.each do |data| %>
+    -------------<br><br>
+    <%= data.inspect %><br>
+    ##########<br><br>
+    title:<%= data.title %><br>
+    author:<%= data.author %><br>
+    item_caption: <%= data.item_caption %><br>
+    image:<%= image_tag data.medium_image_url %><br>
+    <%= form_with model: Book.new, url: admin_books_path do |f| %>
+      <%= f.hidden_field :title, value: data.title %>
+      <%= f.hidden_field :item_caption, value: data.item_caption %>
+      <%= f.hidden_field :isbn, value: data.isbn %>
+      <%= f.hidden_field :author, value: data.author %>
+      <%= f.hidden_field :url, value: data.item_url %>
+      <%= f.hidden_field :image_url, value: data.medium_image_url.gsub('?_ex=120x120', '') %>
+      <%= f.submit "この本を登録" %>
+    <% end %>
   <% end %>
-<% end %>
 
 
 

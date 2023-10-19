@@ -13,6 +13,13 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  views:
+    pagination:
+      first: "&laquo; はじめ"
+      last: "おわり &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   date:
     abbr_day_names:
     - 日

@@ -7,10 +7,10 @@
         <% @books.each do |book| %>
           <div class="mx-2 mb-4">
             <%= link_to book_path(book.id) do %>
-              <%= image_tag book.get_book_image(240, 160), style: "object-fit: cover; width: 240px; height: 160px;" %>
+              <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
             <% end %>
-              <p><%= book.name %></p>
-              <p><%= book.description %></p>
+              <p><%= book.title %></p>
+              <p><%= book.item_caption %></p>
           </div>
         <% end %>
       </div>

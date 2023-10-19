@@ -33,7 +33,7 @@ class Admin::BooksController < ApplicationController
       @category = Category.find(params[:category_id])
       @books = @category.books.recent.page(params[:page])
     else
-      @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(5)
+      @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(3)
     end
   end
 

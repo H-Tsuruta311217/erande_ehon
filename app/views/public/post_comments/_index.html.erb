@@ -6,7 +6,8 @@
         <%= link_to favorites_member_path(post_comment.member) do %>
           <%= post_comment.member.nickname %>さん
         <% end %>
-        のコメント：</td>
+        のコメント：
+      </td>
       <td><%= post_comment.comment %></td>
       <td>
         <% if post_comment.member == current_member %>

@@ -9,6 +9,10 @@
             <td><%= @book.title %></td>
           </tr>
           <tr>
+    		    <td>絵本の作者</td>
+            <td><%= @book.author %></td>
+          </tr>
+          <tr>
             <td>あらすじ</td>
             <td><%= simple_format(@book.item_caption) %></td>
           </tr>
@@ -22,6 +26,7 @@
           </tr>
           <tr>
             <td><%= render'public/favorites/favorite', book: @book %></td>
+            <td></td>
           </tr>
         </table>
           <p>コメント件数：<span id="comment_count"><%= @book.post_comments.count %></span></p>

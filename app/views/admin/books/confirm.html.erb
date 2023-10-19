@@ -10,6 +10,7 @@
                 <div class="mx-2 mb-4">
                   <%=link_to admin_book_path(book.id) do %>
                     <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+                  <% end %>
                   <%= book.title %> <br>
                   <%= book.item_caption %>
                 <% end %>
