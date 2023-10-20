@@ -12,7 +12,7 @@ class Public::MembersController < ApplicationController
     @books = Book.page(params[:page])
   end
 
-  
+
 
   def update
     ensure_correct_member
@@ -37,15 +37,15 @@ class Public::MembersController < ApplicationController
   end
 
   def favorites
-    member = Member.find(params[:id])
-    @favorite_books = member.favorites.map(&:book)
+    @member = Member.find(params[:id])
+    @favorite_books = @member.favorites.map(&:book)
     @books = Book.page(params[:page])
   end
 
   private
 
   def member_params
-    params.require(:member).permit(:last_name, :first_name, :nickname, :email)
+    params.require(:member).permit(:last_name, :first_name, :nickname, :email, :introduction)
   end
 
   def ensure_correct_member

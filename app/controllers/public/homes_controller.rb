@@ -1,6 +1,8 @@
 class Public::HomesController < ApplicationController
   def top
     @categories = Category.all
+    books = Book.all
+    @new_books = books.sort_by { |book| book.created_at }.reverse.first(4)
     @books = Book.order('id DESC').limit(4)
   end
 

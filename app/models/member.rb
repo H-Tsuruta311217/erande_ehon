@@ -10,6 +10,7 @@ class Member < ApplicationRecord
   validates :last_name,   presence: true, length: {maximum: 20}
   validates :first_name,  presence: true, length: {maximum: 20}
   validates :nickname,    presence: true, length: {maximum: 20}
+  validates :introduction, presence: false, length: { maximum: 50 } # 自己紹介の最高文字数は50文字
 
   def self.guest
     find_or_create_by(email: 'guest@example.com') do |member|

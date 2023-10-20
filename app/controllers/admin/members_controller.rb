@@ -25,7 +25,7 @@ class Admin::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:last_name, :first_name, :nickname, :email, :is_active)
+    params.require(:member).permit(:last_name, :first_name, :nickname, :email, :is_active, :introduction)
   end
 
   def get_member_id

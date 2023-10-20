@@ -1,47 +1,58 @@
 <div class="container p-3">
   <div class="row">
-    <div class="col-md-3">
-      <h1 class="my-5">マイページ</h4>
-        <div class="d-flex align-items-center">
-          <h2><b>登録情報</b></h3>
-          <%= link_to "編集する", edit_member_path, class:"btn btn-dark ml-3" %>
-        </div>
-        <table class="table table-bordered">
-          <tr>
-            <td class="bg-light">氏名</td>
-            <td><%= @member.last_name + @member.first_name %></td>
-          </tr>
-
-          <tr>
-            <td class="bg-light">ニックネーム</td>
-            <td><%= @member.nickname %></td>
-          </tr>
-
-          <tr>
-            <td class="bg-light">メールアドレス</td>
-            <td><%= @member.email %></td>
-          </tr>
-        </table>
+    <div class="col-md-4">
+      <div class="d-flex align-items-center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2><span>登録情報</span></h2>
+        <%= link_to "編集する", edit_member_path, class:"btn btn-dark ml-5" %>
       </div>
-      <div class="col-9">
-        <div class="row">
-          <h2 class="my-5">お気に入り登録をしている絵本</h3>
-        </div>
-        <div class="d-flex flex-wrap">
-            <% if @favorite_books.present? %>
-              <% @favorite_books.each do |book| %>
-                <div class="mx-2 mb-4">
-                  <%= link_to book_path(book.id) do %>
-                    <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
-                  <% end %>
-                  <p><%= book.title %></p>
-                </div>
-              <% end %>
-            <% else %>
-              <p>お気に入り登録している絵本はありません。</p>
+      <table class="table table-bordered">
+        <tr>
+          <td style="width: 30%">氏名</td>
+          <td><%= @member.last_name + @member.first_name %></td>
+        </tr>
+
+        <tr>
+          <td style="width: 30%">ニックネーム</th>
+          <td><%= @member.nickname %></td>
+        </tr>
+
+        <tr>
+          <td style="width: 30%">メールアドレス</td>
+          <td><%= @member.email %></td>
+        </tr>
+
+        <tr>
+          <td style="width: 30%">自己紹介</td>
+          <td><%= @member.introduction %></td>
+        </tr>
+
+      </table>
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <h2 class="my-5"><span>お気に入り登録をしている絵本</span></h2>
+      </div>
+      <div class="d-flex flex-wrap">
+          <% if @favorite_books.present? %>
+            <% @favorite_books.each do |book| %>
+              <div class="mx-2 mb-4">
+                <%= link_to book_path(book.id) do %>
+                  <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                <% end %>
+                <p><%= book.title %></p>
+              </div>
             <% end %>
-        </div>
-          <%= paginate @books %>
+          <% else %>
+            <p>お気に入り登録している絵本はありません。</p>
+          <% end %>
       </div>
+        <%= paginate @books %>
+    </div>
   </div>
 </div>

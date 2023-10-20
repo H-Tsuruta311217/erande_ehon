@@ -1,24 +1,24 @@
-<div class="container p-3">
+<div class="container pt-5 pb-5">
   <div class="row">
-
-    <div class="col-10">
-      <div class="row">
-        <h3>絵本一覧</h3>
-
-      </div>
-      <div class="d-flex flex-wrap">
-        <% @books.each do |book| %>
-          <div class="mx-2 mb-4">
-            <%= link_to book_path(book.id) do %>
-              <%= image_tag book.image_url, style: "object-fit: cover; width: 180px; height: 120px;" %>
+    <div class="col-12">
+      <h2><span>絵本一覧</span></h2>
+        <div class="card-list-container py-5">
+          <div class="d-flex justify-content-center" >
+            <% @books.each do |book| %>
+              <div class="mx-2 mb-4 shadow-lg">
+                <%= link_to book_path(book.id) do %>
+                  <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 180px; height: 120px;" %>
+                <% end %>
+                <div class="card-body">
+                  <p class="card-title"><strong>絵本の名前：<%= book.title %></strong></p>
+                  <p class="card-text ">あらすじ：<%= truncate(book.item_caption, :length => 90) %></p>
+                  <p class="card-count"><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
+                </div>
+              </div>
             <% end %>
-            <p>絵本の名前：<%= book.title %></p>
-            <p>あらすじ：<%= book.item_caption %></p>
-            <p><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
           </div>
-        <% end %>
-      </div>
-
+        </div>
+      <%= paginate @books %>
     </div>
   </div>
 </div>
