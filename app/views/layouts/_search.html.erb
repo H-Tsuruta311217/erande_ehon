@@ -8,7 +8,7 @@
       <%= select_tag :category_id,
         options_from_collection_for_select(Category.all, :id, :name, params[:category_id]),
           {
-            prompt: "タグで絞り込み検索",
+            prompt: "カテゴリで絞り込み検索",
             onchange: "submit(this.form);"
           }
       %>

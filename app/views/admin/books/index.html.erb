@@ -19,17 +19,15 @@
                   <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 180px; height: 120px;" %>
                 <% end %>
                 <div class="card-body">
-                  <div class="row">
-                    <p class="card-title"><strong>絵本の名前：<%= book.title %></strong></p>
-                    <p class="card-text">あらすじ：<%= book.item_caption %></p>
-                  </div>
+                  <p class="card-title"><strong>絵本の名前：<%= book.title %></strong></p>
+                  <p class="card-text">あらすじ：<%= book.item_caption %></p>
                 </div>
               </div>
             <% end %>
           </div>
         </div>
         <%= paginate @books %>
-    </div>  
+    </div>
   </div>
 </div>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

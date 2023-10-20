@@ -19,4 +19,8 @@ class Member < ApplicationRecord
       member.nickname = "ゲスト"
     end
   end
+
+  def active_for_authentication?
+    super && (is_active == true)
+  end
 end

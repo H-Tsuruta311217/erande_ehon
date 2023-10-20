@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :search
 
   def after_sign_in_path_for(resource)
-    about_path
+    root_path
   end
 
   def after_sign_out_path_for(resource)
@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
     @book = @q.result(distinct: true)
     @result = params[:q]&.values&.reject(&:blank?)
   end
-  
+
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :nickname, :is_activ])
   end
-  
+
 end
