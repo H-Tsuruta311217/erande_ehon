@@ -1,14 +1,15 @@
 class Public::SearchesController < ApplicationController
 
   def search
-    @range = params[:range]
+    category_id = params[:category_id]
     @word = params[:word]
-
-    if @range == "Category"
-      @categories = Category.looks(params[:search], params[:word])
-    else
-      @books = Book.looks(params[:search], params[:word])
+    @books = Book.looks(params[:word])
+    if category_id.present?
+      category_ids = CategoryBook.where(category_id: category_id).pluck(:book_id)
+      book_ids = @books.ids
+      @books = Book.where(id: category_ids & book_ids)
     end
+    @books = @books.page(params[:page]).per(4)
   end
 
 end

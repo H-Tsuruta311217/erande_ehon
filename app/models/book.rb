@@ -31,8 +31,8 @@ class Book < ApplicationRecord
     #いいねは存在してる？(いいねを既に押してるか、押していないか)
   end
 
-  def self.looks(search, word)
-    if search == "partial_match"
+  def self.looks(word)
+    if word.present?
       @book = Book.where("title LIKE?","%#{word}%")
     else
       @book = Book.all
