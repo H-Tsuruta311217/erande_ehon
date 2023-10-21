@@ -15,7 +15,7 @@ Admin.find_or_create_by!(
     email: "test#{n + 1}@test.com",
     last_name: "テスト",
     first_name: "太郎#{n + 1}",
-    nickname: "テスト",
+    nickname: "テスト#{n + 1}",
     is_active: "true",
     password: "000000"
   )

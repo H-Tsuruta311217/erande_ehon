@@ -34,6 +34,7 @@
 .category_search {
     border: #ffe4e1 5px dotted; /*境界線の指定*/
     padding: 20px;
+    display: inline-block; 
 }
 
 .about_image-left {
@@ -81,4 +82,67 @@ h2 span {
 .booksearch {
   border: #ffe4e1 5px dotted; /*境界線の指定*/
   padding: 20px;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+.tab-menu {
+  display: flex;
+  margin: 0;
+}
+.tab-menu li {
+  list-style-type: none;
+  width: 25%;
+}
+.tab-menu li a {
+  color: #2e1212;
+  text-decoration: none;
+  display: block;
+  margin: 0 5px;
+  padding: 10px 10px;
+  text-align: center;
+  background: #f9f9f9;
+}
+.tab-menu li a:hover {
+  font-weight: bolder;
+}
+.tab-menu li.active a {
+  background: #F9F5EB;
+  color: #2e1212;
+}
+.tab-contents {
+  display: flex;
+  justify-content: center;
+}
+.tab-area {
+  display: none;/*はじめは非表示*/
+  opacity: 0;/*透過0*/
+  background: #F9F5EB;
+  padding: 50px 20px;
+  width: 100%;
+}
+.tab-area.is-active {
+  display: block;/*選択されたら表示*/
+  animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes displayAnime{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.image-container {
+  width: 100%;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto; /* 高さは自動調整 */
+  background-position: center; /* 背景画像を中央に配置 */
 }

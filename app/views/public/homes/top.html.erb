@@ -1,45 +1,120 @@
+<div class="main-visual-cover mx-auto">
+  <div class="main-visual">
+    <div class="image-container">
+      <%= image_tag 'erande_ehon_top.png' %>
+    </div>  
+    <h1 class="mt-5 ml-5">ようこそ、えらんで えほんへ!</h1>
+    <p class="mt-5 ml-5">このサイトは、お子さまの大好きな絵本をみつける<br>
+    ママやパパのためのサイトです。</p>
+  </div>
+</div>
 <div class="container pt-5 pb-5">
   <div class="row">
-    <%= render "public/books/category", categories: @categories %>
-      <div class="col-10">
-        <div class="main-visual-cover mx-auto">
-          <div class="main-visual">
-            <h1 class="mt-5 ml-5">ようこそ、えらんで えほんへ!</h1>
-            <p class="mt-5 ml-5">このサイトは、こどもの大好きな絵本をみつける<br>
-            ママやパパのための<br>
-            口コミ＆コミュニティサイトです。</p>
-          </div>
-        </div>
-        <br>
-        <br>
-      <h2 class="mt-3 ml-5"><span>新着絵本</span></h2>
-        <div class="d-flex justify-content-center" >
-          <% @new_books.each do |book| %>
-            <div class="mx-2 mb-4">
-              <br>
-              <% if admin_signed_in? %>
+    <div class="col-2 align-items-stretch">
+      <%= render "public/books/category", categories: @categories %>
+    </div>
+    <div class="col-10">
+      
+      <br>
+      <br>
+    <h2 class="mt-3 ml-5"><span>新着絵本</span></h2>
+      <div class="d-flex" >
+        <% @new_books.each do |book| %>
+          <div class="mt-3 ml-5">
+            <br>
+            <% if admin_signed_in? %>
 
-                <%= link_to admin_book_path(book.id) do %>
-                  <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
-                <% end %>
-
-              <% else %>
-
-                <%= link_to book_path(book.id) do %>
-                  <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
-                <% end %>
-
+              <%= link_to admin_book_path(book.id) do %>
+                <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
               <% end %>
+
+            <% else %>
+
+              <%= link_to book_path(book.id) do %>
+                <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+              <% end %>
+
+            <% end %>
+            <br>
+            <br>
+            <p><strong><%= book.title %></strong></p>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <br>
+      <h2 class="mt-3 ml-5"><span>お気に入り絵本登録ランキング</span></h2>
+        <div class="d-flex" >
+          <% @all_ranks.each.with_index(1) do |book, i| %>
+            <div class="mt-3 ml-5">
               <br>
-              <br>
-              <p><%= book.title %></p>
+              <% if i == 1 %>  <!--iの値が1-3の時はランキング順位の横に王冠のアイコンを表示させる為、if文で条件分岐を記述。-->
+                <i class="fa-solid fa-crown" style="color: #bea81e;"></i><strong><%= i %>位</strong>
+                <br>
+                <% if admin_signed_in? %>
+
+                  <%= link_to admin_book_path(book.id) do %>
+                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                  <% end %>
+
+                <% else %>
+
+                  <%= link_to book_path(book.id) do %>
+                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                  <% end %>
+
+                <% end %>
+                <br>
+                <br>
+                <strong><%= book.title %></strong>
+
+              <% elsif i == 2 %>
+                <i class="fa-solid fa-crown" style="color: #a9a9a7;"></i></i><strong><%= i %>位</strong>
+                <br>
+                <% if admin_signed_in? %>
+
+                  <%= link_to admin_book_path(book.id) do %>
+                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                  <% end %>
+
+                <% else %>
+
+                  <%= link_to book_path(book.id) do %>
+                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                  <% end %>
+
+                <% end %>
+                <br>
+                <br>
+                <strong><%= book.title %></strong>
+
+              <% elsif i == 3 %>
+                <i class="fa-solid fa-crown" style="color: #db8043;"></i><strong><%= i %>位</strong>
+                <br>
+                <% if admin_signed_in? %>
+
+                  <%= link_to admin_book_path(book.id) do %>
+                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                  <% end %>
+
+                <% else %>
+
+                  <%= link_to book_path(book.id) do %>
+                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                  <% end %>
+
+                <% end %>
+                <br>
+                <br>
+                <strong><%= book.title %></strong>
+              <% end %>
             </div>
           <% end %>
         </div>
-        <div class="row justify-content-end">
-          <i class="fa-solid fa-book mt-1 mr-1"></i>
-            <%= link_to '全てのえほんを見る>', books_path, class: "text-reset" %>
-        </div>
+      <div class="row justify-content-end">
+        <i class="fa-solid fa-book mt-1 mr-1"></i>
+          <%= link_to '全てのえほんを見る>', books_path, class: "text-reset" %>
       </div>
+    </div>
   </div>
 </div>

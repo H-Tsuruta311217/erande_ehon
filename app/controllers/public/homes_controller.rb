@@ -4,6 +4,7 @@ class Public::HomesController < ApplicationController
     books = Book.all
     @new_books = books.sort_by { |book| book.created_at }.reverse.first(4)
     @books = Book.order('id DESC').limit(4)
+    @all_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').limit(3).pluck(:book_id))
   end
 
   def about

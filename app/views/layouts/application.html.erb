@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag('favicon.ico') %>
     <script src="https://kit.fontawesome.com/79da2bfae2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -17,8 +17,9 @@
   <body class="d-flex flex-column min-vh-100">
     <%= render 'layouts/header' %>
     <div class="flex-grow-1">
-      <main class="container flex-shrink-0">
-        <%= flash[:notice] %>
+      <!--<main class="container flex-shrink-0 main-background" style="background-image:url(<%= asset_path "kobanagara35.png" %>); no-repeat center top; background-size: cover;">-->
+        <br>
+        &emsp;<%= flash[:notice] %>
         <%= yield %>
       </main>
     </div>

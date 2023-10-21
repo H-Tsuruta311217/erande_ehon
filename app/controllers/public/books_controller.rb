@@ -11,9 +11,15 @@ class Public::BooksController < ApplicationController
   end
 
   def index
-    @books = Book.page(params[:page]).per(6)
-    @all_books = Book.all
     @categories = Category.all
+    # タブ表示(カテゴリー別or全件)
+    if params[:category]
+      @category = Category.find_by(name: params[:category])
+      @books = @category.books
+    else
+      @all_books = Book.all
+    end
+    @books = Book.page(params[:page]).per(7)
   end
 
 
