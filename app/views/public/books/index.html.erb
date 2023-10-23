@@ -2,49 +2,31 @@
   <div class="row">
     <div class="col-12">
       <h2><span>絵本一覧</span></h2>
-        <div class="card-list-container py-5">
-          <div class="d-flex justify-content-center" >
-            <% @books.each do |book| %>
-              <div class="mx-2 mb-4 shadow-lg">
-                <%= link_to book_path(book.id) do %>
-                  <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 180px; height: 120px;" %>
-                <% end %>
-                <div class="card-body">
-                  <p class="card-title"><strong>絵本の名前：<%= book.title %></strong></p>
-                  <p class="card-text ">あらすじ：<%= truncate(book.item_caption, :length => 90) %></p>
-                  <p class="card-count"><%= link_to "#{book.post_comments.count} コメント", book_path(book.id) %></p>
+        <div class="wrapper">
+          <ul class="tab-menu">
+            <li class="<%= 'active' unless @category %>"><%= link_to '全て', books_path %></li>
+            <!--タブに表示されたカテゴリー名に紐づく投稿を一覧表示-->
+            <% @categories.each do |category| %>
+              <li class="<%= 'active' if category == @category %>"><%= link_to category.name, books_path(category: category.name) %></li>
+            <% end %>
+          </ul>
+        
+          <div class="tab-contents">
+            <div class="tab-area is-active">
+              <div class="row">
+              <!--一覧-->
+                <div class="col-md-12">
+                  <%= render 'index', books: @books %>
+                  <div class="row justify-content-center my-2">
+                    <%= paginate @books %>
+                  </div>
                 </div>
               </div>
-            <% end %>
+              <!--Top-pageリンク-->
+              <p id="page-top"><a href="#">Page Top</a></p>
+            </div>
           </div>
         </div>
-      <%= paginate @books %>
-    </div>
-  </div>
-</div>
-<div class="wrapper">
-  <ul class="tab-menu">
-    <li class="<%= 'active' unless @category %>"><%= link_to '全て', books_path %></li>
-    <!--タブに表示されたカテゴリー名に紐づく投稿を一覧表示-->
-    <% @categories.each do |category| %>
-      <li class="<%= 'active' if category == @category %>"><%= link_to category.name, books_path(category: category.name) %></li>
-    <% end %>
-  </ul>
-
-  <div class="tab-contents">
-    <div class="tab-area is-active">
-      <div class="row">
-      <!--一覧-->
-        <div class="col-md-12">
-          <%= render 'index', books: @books %>
-          <div class="row justify-content-center my-2">
-            <%= paginate @books %>
-          </div>
-        </div>
-
-      </div>
-      <!--Top-pageリンク-->
-      <p id="page-top"><a href="#">Page Top</a></p>
-    </div>
+    </div> 
   </div>
 </div>
