@@ -11,9 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    @q = Book.ransack(params[:q])
-    @book = @q.result(distinct: true)
-    @result = params[:q]&.values&.reject(&:blank?)
+
   end
 
 

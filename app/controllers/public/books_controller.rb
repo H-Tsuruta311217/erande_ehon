@@ -20,6 +20,7 @@ class Public::BooksController < ApplicationController
       else
         # カテゴリーが見つからなかった場合の処理（例: エラーメッセージを設定するか、デフォルトで全ての本を表示するなど）
         flash[:error] = "カテゴリーが見つかりませんでした。"
+        # ステータスが公開になっているもののみ表示
         @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(4)
       end
     else
@@ -32,7 +33,7 @@ class Public::BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :item_caption, :image_url, :category_id)
+    params.require(:book).permit(:title, :item_caption, :image_url, category_ids: [])
   end
 
   def ensure_correct_member

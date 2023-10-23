@@ -3,37 +3,37 @@
     <div class="col">
       <h3 class="my-5">会員情報編集</h3>
 
-      <%= form_with model:@member, local:true do |f| %>
-      <%= render 'layouts/error', obj: @member %>
-        <table class="table table-borderless">
-          <tr>
-            <td>氏名</td>
-            <td><%= f.text_field :last_name, autofocus: true %>&ensp;<%= f.text_field :first_name %></td>
-          </tr>
+        <%= form_with model:@member, local:true do |f| %>
+        <%= render 'layouts/error', obj: @member %>
+          <table class="table table-borderless">
+            <tr>
+              <td>氏名</td>
+              <td><%= f.text_field :last_name, autofocus: true %>&ensp;<%= f.text_field :first_name %></td>
+            </tr>
 
-          <tr>
-            <td>ニックネーム</td>
-            <td><%= f.text_field :nickname %>
-          </tr>
+            <tr>
+              <td>ニックネーム</td>
+              <td><%= f.text_field :nickname %>
+            </tr>
 
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= f.text_field :email %></td>
-            <td></td>
-          </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= f.text_field :email %></td>
+              <td></td>
+            </tr>
 
-          <tr>
-            <td>自己紹介</td>
-            <td><%= f.text_area :introduction , :size => "60x10" %></td>
-            <td></td>
-          </tr>
+            <tr>
+              <td>自己紹介</td>
+              <td><%= f.text_area :introduction , :size => "60x10" %></td>
+              <td></td>
+            </tr>
 
-          <tr>
-            <td></td>
-            <td><%= f.submit "編集内容を保存", class:"btn btn-dark" %>&ensp;<%= link_to "退会する", confirm_member_path(@member), class:"btn btn-danger" %></td>
-          </tr>
-      </table>
-      <% end %>
+            <tr>
+              <td></td>
+              <td><%= f.submit "編集内容を保存", class:"btn btn-dark" %>&ensp;<%= link_to "退会する", confirm_member_path(@member), class:"btn btn-danger" %></td>
+            </tr>
+          </table>
+        <% end %>
     </div>
   </div>
 </div>

@@ -33,6 +33,7 @@ class Admin::BooksController < ApplicationController
       @category = Category.find(params[:category_id])
       @books = @category.books.recent.page(params[:page])
     else
+      # ステータスが公開になっているもののみ表示
       @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(4)
     end
   end

@@ -32,7 +32,7 @@
               <%= link_to book_path(book.id) do %>
                 <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
               <% end %>
-              <p><%= book.title %></p>
+              <p><strong><%= book.title %></strong></p>
             </div>
           <% end %>
         <% else %>
