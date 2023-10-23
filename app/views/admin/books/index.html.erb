@@ -1,6 +1,6 @@
 <div class="container pt-5 pb-5">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
       <div class="booksearch">
         <h1><span>新規登録する絵本を検索</span></h1>
           <%= form_with url: admin_books_path, method: :get do |f| %>
@@ -9,14 +9,14 @@
           <% end %>
       </div>
     </div>
-    <div class="col-8">
+    <div class="col-9">
       <h2><span>絵本一覧</span></h2>
         <div class="card-list-container py-5">
           <div class="d-flex justify-content-center" >
             <% @books.each do |book| %>
-              <div class="mx-2 mb-4 shadow-lg" >
+              <div class="mx-2 mb-4 shadow-lg" style="width: 100%;" >
                 <%= link_to admin_book_path(book.id) do %>
-                  <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 180px; height: 120px;" %>
+                  <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 100%; height: 120px;" %>
                 <% end %>
                 <div class="card-body">
                   <p class="card-title"><strong>絵本の名前：<%= book.title %></strong></p>
@@ -30,27 +30,43 @@
     </div>
   </div>
 </div>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <%=link_to "下書き一覧へ", confirm_admin_books_path, class: "mb-2;", style: "font-size: 15px;" "color: #3B240B" %>
+<div class="container pt-5 pb-5">
+  <div class="row">
+    <div class="col-lg-4">
+      <%=link_to "下書き一覧へ", confirm_admin_books_path, class: "mb-2;", style: "font-size: 15px;" "color: #3B240B" %>
+    </div>
+  </div>
+</div>
 
-  <% @result.each do |data| %>
-    -------------<br><br>
-    <%= data.inspect %><br>
-    ##########<br><br>
-    title:<%= data.title %><br>
-    author:<%= data.author %><br>
-    item_caption: <%= data.item_caption %><br>
-    image:<%= image_tag data.medium_image_url %><br>
-    <%= form_with model: Book.new, url: admin_books_path do |f| %>
-      <%= f.hidden_field :title, value: data.title %>
-      <%= f.hidden_field :item_caption, value: data.item_caption %>
-      <%= f.hidden_field :isbn, value: data.isbn %>
-      <%= f.hidden_field :author, value: data.author %>
-      <%= f.hidden_field :url, value: data.item_url %>
-      <%= f.hidden_field :image_url, value: data.medium_image_url.gsub('?_ex=120x120', '') %>
-      <%= f.submit "この本を登録" %>
-    <% end %>
-  <% end %>
+
+<div class="container pt-5 pb-5">
+  <div class="row">
+    <div class="col-8">
+      <h2><span>検索結果</span></h2>
+      <% @result.each do |data| %>
+        <%= image_tag data.medium_image_url %><br>
+        タイトル:&nbsp; <%= data.title %><br>
+        作者:&nbsp; <%= data.author %><br>
+        あらすじ: &nbsp; <%= data.item_caption %><br>
+
+        <%= form_with model: Book.new, url: admin_books_path do |f| %>
+          <%= f.hidden_field :title, value: data.title %>
+          <%= f.hidden_field :item_caption, value: data.item_caption %>
+          <%= f.hidden_field :isbn, value: data.isbn %>
+          <%= f.hidden_field :author, value: data.author %>
+          <%= f.hidden_field :url, value: data.item_url %>
+          <%= f.hidden_field :image_url, value: data.medium_image_url.gsub('?_ex=120x120', '') %>
+          <%= f.submit "この本を登録" %>
+         <br>
+         <br>
+         <br>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
 
 
 

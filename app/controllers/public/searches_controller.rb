@@ -9,7 +9,8 @@ class Public::SearchesController < ApplicationController
       book_ids = @books.ids
       @books = Book.where(id: category_ids & book_ids)
     end
-    @books = @books.page(params[:page]).per(4)
+    @books = @books.where(status: :published).order(params[:desc]).page(params[:page]).per(4)
+
   end
 
 end

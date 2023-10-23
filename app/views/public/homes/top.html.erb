@@ -11,10 +11,9 @@
       <%= render "public/books/category", categories: @categories %>
     </div>
     <div class="col-10">
-
       <br>
       <br>
-    <h2 class="mt-3 ml-5"><span>新着絵本</span></h2>
+      <h2 class="mt-3 ml-5"><span>新着絵本</span></h2>
       <div class="d-flex" >
         <% @new_books.each do |book| %>
           <div class="mt-3 ml-5">
@@ -118,7 +117,7 @@
             <%= image_tag ('pagetop.png'), data: {"turbolinks"=>false}, class: "arrow" %>
           </a>
         </span>
-      </div>  
+      </div>
     </div>
   </div>
 </div>

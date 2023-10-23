@@ -44,7 +44,7 @@ class Admin::BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to admin_book_path, notice: "変更を保村しました"
+      redirect_to admin_book_path, notice: "変更を保存しました"
     else
       render :edit
     end

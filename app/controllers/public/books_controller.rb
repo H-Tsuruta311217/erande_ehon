@@ -16,14 +16,14 @@ class Public::BooksController < ApplicationController
     if params[:category]
       @category = Category.find_by(name: params[:category]) # カテゴリー名で検索
       if @category
-        @books = @category.books.page(params[:page]).per(4)
+        @books = @category.books.where(status: :published).page(params[:page]).per(4)
       else
         # カテゴリーが見つからなかった場合の処理（例: エラーメッセージを設定するか、デフォルトで全ての本を表示するなど）
         flash[:error] = "カテゴリーが見つかりませんでした。"
-        @books = Book.page(params[:page]).per(4)
+        @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(4)
       end
     else
-      @books = Book.page(params[:page]).per(4)
+      @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(4)
     end
   end
 

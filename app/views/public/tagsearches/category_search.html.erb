@@ -1,6 +1,8 @@
 <div class="container pt-5 pb-5">
   <div class="row">
-    <%= render "public/books/category", categories: @categories %>
+    <div class="col-2 align-items-stretch">
+      <%= render "public/books/category", categories: @categories %>
+    </div>
     <div class="col-md-9">
     <%= render "public/searches/search" , books: @books %>
     </div>

@@ -1,12 +1,13 @@
 ja:
-  enums:
-    member:
-      email: "メールアドレス"
-      last_name: "姓(漢字)"
-      first_name: "名(漢字)"
-      nickname: "ニックネーム"
-      password: "パスワード"
-      password_confirmation: "パスワード（確認用）"
+  activerecord:
+    attributes:
+      member:
+        email: "メールアドレス"
+        last_name: "姓(漢字)"
+        first_name: "名(漢字)"
+        nickname: "ニックネーム"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
