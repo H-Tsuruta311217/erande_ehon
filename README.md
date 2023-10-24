@@ -33,7 +33,7 @@
 ​
 ## 使用素材
 - フリーイラスト素材として以下を使用
- - kyuncuts(https://kyuncuts.com/)
- - ICOOON MONO(https://icooon-mono.com/)
+  - kyuncuts(https://kyuncuts.com/)
+  - ICOOON MONO(https://icooon-mono.com/)
 - ロゴ・TOP画像作成
- - CANVA(https://www.canva.com/)
+  - CANVA(https://www.canva.com/)

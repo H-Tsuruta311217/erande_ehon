@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-3">
       <div class="booksearch">
-        <h1 class="api_search"><span>新規登録する絵本を検索</span></h1>
+        <p class="api_search"><span>新規登録する絵本を検索</span></p>
           <%= form_with url: admin_books_path, method: :get do |f| %>
             <%= f.text_field :title %>
             <%= f.submit "絵本を検索" %>
@@ -10,17 +10,17 @@
       </div>
     </div>
     <div class="col-9">
-      <h2><span>絵本一覧</span></h2>
+      <h1><span>絵本一覧</span></h1>
         <div class="card-list-container py-5">
           <div class="d-flex justify-content-center" >
             <% @books.each do |book| %>
-              <div class="mx-2 mb-4 shadow-lg" style="width: 100%;" >
+              <div class="mx-2 mb-4 shadow-lg" style="width: 200px;" >
                 <%= link_to admin_book_path(book.id) do %>
-                  <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 100%; height: 120px;" %>
+                  <%= image_tag book.image_url, class:"card-img-top", style: "object-fit: fill; width: 200px; height: 120px;" %>
                 <% end %>
                 <div class="card-body">
                   <p class="card-title"><strong>絵本の名前：<%= book.title %></strong></p>
-                  <p class="card-text">あらすじ：<%= book.item_caption %></p>
+                  <p class="card-text">あらすじ：<%= truncate(book.item_caption, :length => 90) %></p>
                 </div>
               </div>
             <% end %>
@@ -40,6 +40,7 @@
   <div class="row">
     <div class="col-8">
       <h2><span>検索結果</span></h2>
+      <br>
       <% @result.each do |data| %>
         <%= image_tag data.medium_image_url %><br>
         タイトル:&nbsp; <%= data.title %><br>

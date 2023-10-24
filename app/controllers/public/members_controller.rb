@@ -1,6 +1,8 @@
 class Public::MembersController < ApplicationController
+  before_action :ensure_guest_member, only: [:edit]
   before_action :ensure_correct_member, only: [:update, :edit, :show]
   before_action :authenticate_member!, only: [:show]
+
 
   def show
     if params[:id] == "guest_sign_in"
@@ -53,6 +55,13 @@ class Public::MembersController < ApplicationController
     unless @member == current_member
       flash[:notice] = "権限がありません"
       redirect_to request.referer
+    end
+  end
+
+  def ensure_guest_member
+    @member = Member.find(params[:id])
+    if @member.email == "guest@example.com"
+      redirect_to member_path(current_member) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 
