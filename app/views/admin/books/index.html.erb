@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-3">
       <div class="booksearch">
-        <h1><span>新規登録する絵本を検索</span></h1>
+        <h1 class="api_search"><span>新規登録する絵本を検索</span></h1>
           <%= form_with url: admin_books_path, method: :get do |f| %>
             <%= f.text_field :title %>
             <%= f.submit "絵本を検索" %>
@@ -27,13 +27,11 @@
           </div>
         </div>
         <%= paginate @books %>
-    </div>
-  </div>
-</div>
-<div class="container pt-5 pb-5">
-  <div class="row">
-    <div class="col-lg-4">
-      <%=link_to "下書き一覧へ", confirm_admin_books_path, class: "mb-2;", style: "font-size: 15px;" "color: #3B240B" %>
+        <br>
+        <div class="row justify-content-end">
+          <i class="fa-solid fa-pencil mt-3 mr-2 fa-lg", style: "color: #3B240B"></i>
+          <%=link_to "下書き一覧へ", confirm_admin_books_path, class: "mb-2;", style: "font-size: 13px;" "color: #3B240B" %>
+        </div>
     </div>
   </div>
 </div>

@@ -36,6 +36,19 @@
     padding: 20px;
     display: inline-block;
 }
+h1 {
+  font-size: 20px;
+}
+
+h1 span {
+  padding: 1.65rem 2rem;
+  background-color: rgba(160, 218, 234, .4);
+  background-image:
+    linear-gradient(90deg, rgba(160, 218, 234, .3) 50%, transparent 50%),
+    linear-gradient(rgba(160, 218, 234, .3) 50%, transparent 50%);
+  background-size: 25px 25px;
+
+}
 
 .about_image-left {
     float: left; /* 画像を左に寄せる */
@@ -44,22 +57,35 @@
 .about_image-right {
     float: right; /* 画像を右に寄せる */
 }
-
-h1 {
-  font-size: 20px;
+.about-title {
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
 }
 
-h1 span {
-    display: table;
-    background: linear-gradient(transparent 80%, #A0DAEA 80%);
+.about-title span {
+
+  background: linear-gradient(transparent 80%, #A0DAEA 80%);
+  text-align: center;
+}
+
+
+
+.api_search {
+  font-size: 15px;
 }
 h2 {
   font-size: 20px;
 }
 
 h2 span {
-    display: table;
-    background: linear-gradient(transparent 80%, #A0DAEA 80%);
+  padding: 1.65rem 2rem;
+  background-color: rgba(160, 218, 234, .4);
+  background-image:
+    linear-gradient(90deg, rgba(160, 218, 234, .3) 50%, transparent 50%),
+    linear-gradient(rgba(160, 218, 234, .3) 50%, transparent 50%);
+  background-size: 25px 25px;
 }
 
 /*ページネーション自体のデザイン*/

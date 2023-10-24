@@ -7,9 +7,6 @@
 </div>
 <div class="container pt-5 pb-5">
   <div class="row">
-    <div class="col-2 align-items-stretch">
-      <%= render "public/books/category", categories: @categories %>
-    </div>
     <div class="col-10">
       <br>
       <br>
@@ -107,17 +104,22 @@
             </div>
           <% end %>
         </div>
+
       <div class="row justify-content-end">
-        <i class="fa-solid fa-book mt-1 mr-1"></i>
-        <%= link_to '全てのえほんを見る>', books_path, class: "text-reset" %>
-      </div>
-      <div class="row justify-content-end">
-        <span id="back">
-          <a href="">
-            <%= image_tag ('pagetop.png'), data: {"turbolinks"=>false}, class: "arrow" %>
-          </a>
-        </span>
+        <i class="fa-solid fa-book mt-1 mr-1", style: "color: #3B240B"></i>
+        <%= link_to '全てのえほんを見る>', books_path, class: "text-reset" %>&emsp;&emsp;
       </div>
     </div>
+    <div class="col-2 align-items-stretch">
+      <%= render "public/books/category", categories: @categories %>
+    </div>
+    <div class="row justify-content-end">
+      <span id="back">
+        <a href="">
+          <%= image_tag ('pagetop.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+        </a>
+      </span>
+    </div>
+
   </div>
 </div>
