@@ -1,5 +1,6 @@
 class Public::SearchesController < ApplicationController
 
+  # 検索窓での検索
   def search
     category_id = params[:category_id]
     @word = params[:word]
