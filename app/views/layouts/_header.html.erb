@@ -1,80 +1,85 @@
 <header style="background-color: #FAE094;">
-  <div class="container-fluid">
-    <div class="row mx-auto">
-      <div class="col-3">
-        <%= link_to root_path do %>
-          <%= image_tag 'erande_ehon2.png', style: "object-fit: cover; width: 100px; height: 100px;" %>
-        <% end %>
-      </div>
-      <div class="col-3 mt-5 text-right">
-        <% if member_signed_in?%>
-          <p style="font-size:15px"><%= "ようこそ、#{current_member.last_name}#{current_member.first_name}さん！" %></p>
-        <% end %>
-      </div>
-      <div class="col-6">
-        <ul class="row justify-content-end my-2 list-unstyled">
-          <% if member_signed_in? %>
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-face-smile"></i>
-              <%= link_to "マイページ", member_path(id: current_member.id), class: "text-decoration-none align-middle", style: "color: #3B240B" %>
-            </li>
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-book-open"></i>
-              <%= link_to "絵本一覧", books_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
-            </li>
-
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
-            </li>
-
-          <% elsif admin_signed_in? %>
-
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-book-open"></i>
-              <%= link_to "絵本一覧", admin_books_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
-            </li>
-
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-users"></i>
-              <%= link_to "会員一覧", admin_members_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
-            </li>
-
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-tags"></i>
-              <%= link_to "カテゴリ一覧", admin_categories_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
-            </li>
-
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
-            </li>
-
-          <% else %>
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-book-open"></i>
-              <%= link_to "About", about_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
-            </li>
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-user-plus"></i>
-              <%= link_to "新規登録", new_member_registration_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
-            </li>
-
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-right-to-bracket"></i>
-              <%= link_to "ログイン", new_member_session_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
-            </li>
-            <li class="nav-item mx-2 mt-2">
-              <i class="fa-solid fa-seedling"></i>
-              <%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
-            </li>
-
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+        <nav class="navbar">
+          <%= link_to root_path do %>
+            <%= image_tag 'erande_ehon2.png', style: "object-fit: cover; width: 100px; height: 100px;" %>
           <% end %>
-        </ul>
-        <div class="row justify-content-end my-2 list-unstyled">
-          <%= render 'layouts/search' %>
+        </nav>
+        <div class="navbar justify-content-center">
+          <% if member_signed_in?%>
+            <p style="font-size:15px; text-align: center;" class="text-center"><%= "ようこそ、#{current_member.last_name}#{current_member.first_name}さん！" %></p>
+          <% end %>
         </div>
-      </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if member_signed_in? %>
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-face-smile"></i>
+                <%= link_to "マイページ", member_path(id: current_member.id), class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+              </li>
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-book-open"></i>
+                <%= link_to "絵本一覧", books_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+              </li>
+  
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+              </li>
+  
+            <% elsif admin_signed_in? %>
+  
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-book-open"></i>
+                <%= link_to "絵本一覧", admin_books_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+              </li>
+  
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-users"></i>
+                <%= link_to "会員一覧", admin_members_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+              </li>
+  
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-tags"></i>
+                <%= link_to "カテゴリ一覧", admin_categories_path, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+              </li>
+  
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-decoration-none align-middle", style: "color: #3B240B" %>
+              </li>
+  
+            <% else %>
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-book-open"></i>
+                <%= link_to "About", about_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
+              </li>
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-user-plus"></i>
+                <%= link_to "新規登録", new_member_registration_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
+              </li>
+  
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <%= link_to "ログイン", new_member_session_path, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
+              </li>
+              <li class="nav-item mx-2 mt-2">
+                <i class="fa-solid fa-seedling"></i>
+                <%= link_to 'ゲストログイン', members_guest_sign_in_path, method: :post, class: "text-decoration-none align-middle align-middle", style: "color: #3B240B" %>
+              </li>
+  
+            <% end %>
+          </ul>
+        </div>
+          
+      </div>  
     </div>
+  </nav>
+  <div class="text-right mb-3 mr-5">
+    <%= render 'layouts/search' %>
   </div>
 </header>
