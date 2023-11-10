@@ -7,13 +7,13 @@
 </div>
 <div class="container pt-5 pb-5">
   <div class="row">
-    <div class="col-10">
+    <div class="col-lg-12 col-md-10 col-sm-12 mx-auto">
       <br>
       <br>
       <h1 class="mt-3 ml-5"><span>新着絵本</span></h1>
-      <div class="d-flex" >
+      <div class="row">
         <% @new_books.each do |book| %>
-          <div class="mt-3 ml-5">
+          <div class="col-lg-2 col-md-4 col-sm-6 mb-3 mt-3 ml-5">
             <br>
             <% if admin_signed_in? %>
 
@@ -24,7 +24,7 @@
             <% else %>
 
               <%= link_to book_path(book.id) do %>
-                <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                <%= image_tag book.image_url, class: "img-fluid", style: "object-fit: fill; width: 180px; height: 120px;" %>
               <% end %>
 
             <% end %>
@@ -37,9 +37,9 @@
       <br>
       <br>
       <h2 class="mt-3 ml-5"><span>お気に入り絵本登録ランキング</span></h2>
-        <div class="d-flex" >
+        <div class="row" >
           <% @all_ranks.each.with_index(1) do |book, i| %>
-            <div class="mt-3 ml-5">
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3 mt-3 ml-5">
               <br>
               <% if i == 1 %>  <!--iの値が1-3の時はランキング順位の横に王冠のアイコンを表示させる為、if文で条件分岐を記述。-->
                 <i class="fa-solid fa-crown" style="color: #bea81e;"></i><strong><%= i %>位</strong>
@@ -110,16 +110,16 @@
         <%= link_to '全てのえほんを見る>', books_path, class: "text-reset" %>&emsp;&emsp;
       </div>
     </div>
-    <div class="col-2 align-items-stretch">
-      <%= render "public/books/category", categories: @categories %>
+    <div class="col-lg-3 d-none d-lg-block">
+        <%= render "public/books/category", categories: @categories %>
+      
+      <div class="row justify-content-end">
+        <span id="back">
+          <a href="">
+            <%= image_tag ('pagetop.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+          </a>
+        </span>
+      </div>
     </div>
-    <div class="row justify-content-end">
-      <span id="back">
-        <a href="">
-          <%= image_tag ('pagetop.png'), data: {"turbolinks"=>false}, class: "arrow" %>
-        </a>
-      </span>
-    </div>
-
   </div>
 </div>
