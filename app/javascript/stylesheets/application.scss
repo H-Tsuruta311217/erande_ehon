@@ -119,11 +119,18 @@ h2 span {
 }
 .tab-menu {
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
+  padding: 0;
+
 }
 .tab-menu li {
   list-style-type: none;
-  width: 25%;
+  width: 10%;
+  border-bottom: 1px solid #F9F5EB; /* タブ間の仕切り線 */
+}
+.tab-menu li:first-child {
+  border-top: none;
 }
 .tab-menu li a {
   color: #2e1212;

@@ -1,11 +1,11 @@
 <div class="container pt-5 pb-5">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 col-md-12 col-lg-12 mx-auto">
       <h1><span>絵本一覧</span></h1>
         <br>
         <br>
         <div class="wrapper">
-          <ul class="tab-menu">
+          <ul class="tab-menu" role="tablist">
             <li class="<%= 'active' unless @category %>"><%= link_to '全て', books_path %></li>
             <!--タブに表示されたカテゴリー名に紐づく投稿を一覧表示-->
             <% @categories.each do |category| %>
@@ -17,7 +17,7 @@
             <div class="tab-area is-active">
               <div class="row">
               <!--一覧-->
-                <div class="col-md-12">
+                <div class="col-12 col-md-12 col-lg-12 mx-auto">
                   <%= render 'index', books: @books %>
                   <div class="row justify-content-center my-2">
                     <%= paginate @books %>
