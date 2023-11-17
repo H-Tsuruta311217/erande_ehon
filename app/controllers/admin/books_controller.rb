@@ -23,9 +23,9 @@ class Admin::BooksController < ApplicationController
 
   def index
     if params[:title].present?
-      @result = RakutenWebService::Books::Book.search(size: 7, title: params[:title])
+      @result = RakutenWebService::Books::Book.search(size: 7, title: params[:title]) #最大７冊
     else
-      @result = []
+      @result = [] #タイトルが空白でも空の配列が代入される
     end
     @books = Book.all
     @categories = Category.all
@@ -61,19 +61,12 @@ class Admin::BooksController < ApplicationController
     redirect_to admin_books_path
   end
 
-  def confirm
-    # @book = Book.find(params[:id])
+  def confirm #下書き一覧
     @books = Book.where(status: :draft).order('created_at DESC').page(params[:page]).per(5)
   end
 
   def search
-    if params[:keyword]
-      @books = RakutenWebService::Ichiba::Books::Book.search(keyword: params[:keyword])
-    end
-    @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true)
-    @search_category = Category.find(params[:category_id]) if params[:category_id]
-    @search_word = params[:q][:name_cont] if params[:q].present?
+
   end
 
   private

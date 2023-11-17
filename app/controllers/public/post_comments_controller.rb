@@ -16,7 +16,7 @@ class Public::PostCommentsController < ApplicationController
   def destroy
     @book = Book.find(params[:book_id])
     @post_comment = PostComment.find_by(id: params[:id], book_id: params[:book_id])
-    #redirect_to book_path(params[:book_id])
+    #redirect_to book_path(params[:book_id])　非同期化のためコメントアウト
     @post_comment.destroy
   end
 

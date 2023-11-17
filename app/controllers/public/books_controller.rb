@@ -18,13 +18,13 @@ class Public::BooksController < ApplicationController
       if @category
         @books = @category.books.where(status: :published).page(params[:page]).per(4)
       else
-        # カテゴリーが見つからなかった場合の処理（例: エラーメッセージを設定するか、デフォルトで全ての本を表示するなど）
+        # カテゴリーが見つからなかった場合の処理
         flash[:error] = "カテゴリーが見つかりませんでした。"
         # ステータスが公開になっているもののみ表示
         @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(4)
       end
     else
-      @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(4)
+      @books = Book.where(status: :published).order(params[:desc]).page(params[:page]).per(4) #公開中のものを新しい順に４つずつ
     end
   end
 
