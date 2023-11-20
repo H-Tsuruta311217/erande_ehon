@@ -1,5 +1,5 @@
 class Admin::BooksController < ApplicationController
-
+  before_action :authenticate_admin!, except: [:top]
   helper_method :can_delete_comment?
 
   def new
