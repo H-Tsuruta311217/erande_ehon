@@ -29,7 +29,7 @@
             <td></td>
           </tr>
         </table>
-          <p>コメント件数：<span id="comment_count"><%= @book.post_comments.count %></span></p>
+        <p>コメント件数：<span id="comment_count"><%= @book.post_comments.count %></span></p>
         <div id="comment_index">
           <%= render "public/post_comments/index", book: @book %>
         </div>

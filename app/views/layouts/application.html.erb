@@ -17,13 +17,12 @@
   <body class="d-flex flex-column min-vh-100">
     <%= render 'layouts/header' %>
     <div class="flex-grow-1">
-      <!--<main class="container flex-shrink-0 main-background" style="background-image:url(<%= asset_path "kobanagara35.png" %>); no-repeat center top; background-size: cover;">-->
+      <main>
         <br>
         &emsp;<%= flash[:notice] %>
         <%= yield %>
       </main>
     </div>
     <%= render 'layouts/footer' %>
-
   </body>
 </html>

@@ -13,7 +13,6 @@ class Public::FavoritesController < ApplicationController
     end
   end
 
-
   def destroy
     if current_member.present?
       book = Book.find(params[:book_id])
