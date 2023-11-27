@@ -1,3 +1,15 @@
+<div class="mx-2 mb-5">
+  <!-- 検索キーワードの表示 -->
+  <% if params[:word].present? %>
+    <p>検索キーワード: <%= params[:word] %></p>
+  <% end %>
+
+  <!-- 選択したカテゴリの表示 -->
+  <% if @searched_category.present? %>
+  <p>選択したカテゴリ: <%= @searched_category.name %></p>
+<% end %>
+</div>
+
 <h1 class="mt-3"><span>検索結果</span></h1>
   <div class="search-books d-flex flex-wrap">
     <% books.each do |book| %>
