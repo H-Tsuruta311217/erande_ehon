@@ -1,3 +1,2 @@
-console.log("hoge")
 $('#comment_index').html("<%= j(render 'public/post_comments/index', book: @book) %>");
 $('#comment_count').html("<%= @book.post_comments.count %>")
