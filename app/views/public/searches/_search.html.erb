@@ -6,8 +6,10 @@
 
   <!-- 選択したカテゴリの表示 -->
   <% if @searched_category.present? %>
-  <p>選択したカテゴリ: <%= @searched_category.name %></p>
-<% end %>
+    <p>選択したカテゴリ: <%= @searched_category.name %></p>
+  <% else %>
+    <p>aaaaa</p>
+  <% end %>
 </div>
 
 <h1 class="mt-3"><span>検索結果</span></h1>
