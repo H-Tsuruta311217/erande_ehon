@@ -20,7 +20,7 @@ class Public::PostCommentsController < ApplicationController
     #redirect_to book_path(params[:book_id])　非同期化のためコメントアウト
     if current_member == @post_comment.member
       @post_comment.destroy
-      render json: { message: 'コメントが削除されました' }, status: :ok
+      # render json: { message: 'コメントが削除されました' }, status: :ok
     else
       render json: { message: '他人のコメントは削除できません' }, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class Public::PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-  
+
   def set_post_comment
     @post_comment = current_member.post_comments.find(params[:id])
   rescue ActiveRecord::RecordNotFound
