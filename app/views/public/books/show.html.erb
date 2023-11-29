@@ -25,7 +25,9 @@
             </td>
           </tr>
           <tr>
-            <td><%= render'public/favorites/favorite', book: @book %></td>
+            <td id="favorite_buttons_<%= @book.id %>">
+              <%= render'public/favorites/favorite', book: @book %>
+            </td>
             <td></td>
           </tr>
         </table>
