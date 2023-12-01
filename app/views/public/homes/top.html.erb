@@ -53,7 +53,7 @@
                 <% else %>
 
                   <%= link_to book_path(book.id) do %>
-                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                    <%= image_tag book.image_url, class: "img-fluid", style: "object-fit: fill; width: 180px; height: 120px;" %>
                   <% end %>
 
                 <% end %>
@@ -73,7 +73,7 @@
                 <% else %>
 
                   <%= link_to book_path(book.id) do %>
-                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                    <%= image_tag book.image_url, class: "img-fluid", style: "object-fit: fill; width: 180px; height: 120px;" %>
                   <% end %>
 
                 <% end %>
@@ -93,7 +93,7 @@
                 <% else %>
 
                   <%= link_to book_path(book.id) do %>
-                    <%= image_tag book.image_url, style: "object-fit: fill; width: 180px; height: 120px;" %>
+                    <%= image_tag book.image_url, class: "img-fluid", style: "object-fit: fill; width: 180px; height: 120px;" %>
                   <% end %>
 
                 <% end %>
@@ -112,7 +112,7 @@
     </div>
     <div class="col-lg-3 d-none d-lg-block">
         <%= render "public/books/category", categories: @categories %>
-      
+
       <div class="row justify-content-end">
         <span id="back">
           <a href="">

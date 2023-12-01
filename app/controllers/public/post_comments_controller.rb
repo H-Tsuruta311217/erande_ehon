@@ -10,10 +10,6 @@ class Public::PostCommentsController < ApplicationController
   end
 
 
-
-  def edit
-  end
-
   def destroy
     @book = Book.find(params[:book_id])
     @post_comment = PostComment.find_by(id: params[:id], book_id: params[:book_id])
